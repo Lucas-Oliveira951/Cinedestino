@@ -1,0 +1,1102 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --primary-color: #0B0B0B;
+    --secundary-color: #1C1C1C;
+    --text-color: #E4D6A9;
+    --tercery-color: #650207;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+/* Menu  responsivo para Tablets e celulares*/
+body {
+    background-image: url(../Image/background.jpg);
+    background-repeat: no-repeat;
+    background-color: var(--secundary-color);
+    transition: background-color 0.5s ease;
+}
+
+header {
+    padding-inline: 16px;
+}
+
+.titulo-principal {
+    color: var(--text-color);
+    margin: 20px 7%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.nav-list {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    list-style: none;
+    color: var(--text-color);
+    padding: 20px 7%;
+}
+
+.item-list {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.item-list:hover {
+    color: var(--secundary-color);
+    background-color: var(--text-color);
+    border-radius: 30px;
+    padding: 20px;
+    transition: 1s ease;
+}
+
+.botao-login {
+    background-color: var(--tercery-color);
+    padding: 15px 50px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.botao-login:hover {
+    background-color: var(--secundary-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    transition: 1s ease;
+}
+
+.foto_de_perfil {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+/* Versão responsiva de menu para Tablets / celulares */
+
+.menu-lateral {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    z-index: 50;
+    box-shadow: 5px 5px 5px var(--secundary-color);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-lateral.ativo {
+    right: 0;
+}
+
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.menu-lateral ul li {
+    padding: 15px 30px;
+}
+
+.menu-lateral ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    gap: 10px;
+}
+
+.menu-lateral ul li a:hover {
+    color: var(--secundary-color);
+    transition: 0.3s ease;
+}
+
+.menu-lateral ul li a i {
+    font-size: 24px;
+}
+
+.menu-lateral ul li:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+
+.menu-lateral ul li a i:hover {
+    transition: 0.3s ease;
+    transform: translateX(5px) rotate(5deg);
+}
+
+.botao-menu {
+    display: none;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    position: fixed;
+    right: 50px;
+    top: 20px;
+    z-index: 3;
+    border-radius: 5px;
+    font-size: 24px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.botao-menu:hover {
+    background-color: var(--text-color);
+    color: var(--secundary-color);
+    transition: 1s;
+}
+
+.botao-menu.ativo {
+    right: 320px;
+    z-index: 55;
+}
+
+.conteudo {
+    transition: all 0.5s ease;
+    height: 100vh;
+}
+
+body.ativo {
+    background-color: var(--secundary-color);
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.753);
+    opacity: 0;
+    transition: 0.3s ease;
+    visibility: hidden;
+    z-index: 4;
+}
+
+.background.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Barra de pesquisa (area) */
+.apresentacao {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-left: 27%;
+    margin-right: 20%;
+    margin-top: 40vh;
+    color: var(--text-color);
+}
+
+.apresentacao h1 {
+    font-size: 50px;
+}
+
+.apresentacao h3 {
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+.barra-de-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.barra-input {
+    position: relative;
+    width: 100%;
+}
+
+.barra-input i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+#Pesquisar {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    padding: 12px 40px 12px 15px;
+    width: 100%;
+    border: 2px solid var(--text-color);
+    border-radius: 15px;
+}
+
+#Pesquisar::placeholder {
+    color: var(--text-color);
+}
+
+#botao-pesquisa {
+    padding: 14px 40px;
+    background-color: var(--tercery-color);
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+#botao-pesquisa:hover {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    transition: 1s ease;
+}
+
+
+
+/* Catálogo Desktop - Parte 1 */
+.secao-filmes {
+    padding: 24px 7%;
+    margin-top: 40%;
+}
+
+.secao-title {
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    font-size: 40px;
+    margin: 8px 0 2%;
+    font-weight: 600;
+}
+
+.filmes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    height: 55vh;
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+}
+
+/* Catálogo Desktop - PARTE (Mudança de cores no background) */
+
+.secao-title-mobile {
+    display: none;
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    font-size: 40px;
+    margin: 8px 0 2%;
+    font-weight: 600;
+}
+
+
+.secao-filmes2 {
+    padding: 50px 7%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.filmes2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 65vh;
+
+}
+
+.filme-card {
+    background: transparent;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filme-card:hover {
+    transform: scale(1.05);
+    transition: 0.5s ease;
+}
+
+.poster {
+    width: 100%;
+    overflow: hidden;
+}
+
+.poster img {
+    width: 85%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 2/3;
+    border-radius: 15px;
+}
+
+.filme-descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filme-title {
+    font-size: 25px;
+}
+
+.filmes-ano {
+    font-size: 15px
+}
+
+/* Catálogo Versão tablet e Mobile  */
+
+/* Mobile PARTE 1 */
+
+.secao-filmes-mobile {
+    display: none;
+}
+
+.filmes-mobile {
+    display: none;
+}
+
+.filme-card-mobile {
+    display: none;
+}
+
+/* Mobile PARTE 2 - background diferente  */
+
+.secao-filmes-mobile2 {
+    display: none;
+}
+
+.filmes-mobile2 {
+    display: none;
+}
+
+.filme-card-mobile2 {
+    display: none;
+}
+
+/* Mobile PARTE 3 */
+
+.secao-filmes-mobile3 {
+    display: none;
+}
+
+.filmes-mobile3 {
+    display: none;
+}
+
+.filme-card-mobile3 {
+    display: none;
+}
+
+/* FOOTER Desktop versão */
+
+.informacoes {
+    color: var(--text-color);
+    padding: 40px 60px;
+}
+
+.info-link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+.info-link a:hover {
+    color: white;
+    transition: 0.5s ease;
+}
+
+.info-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.rede-sociais {
+    display: flex;
+    gap: 40px;
+}
+
+.rede-sociais .rede {
+    display: flex;
+    flex-direction: column;
+}
+
+.rede {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.rede a {
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 30px;
+    border: 2px solid #7C838A;
+}
+
+.rede i {
+    font-size: 14px;
+
+}
+
+.info-coluna1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-coluna1 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.info-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.info-coluna a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* FOOTER TABLET */
+
+.informacoes-tablet {
+    display: none;
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.insta i {
+    background: linear-gradient(45deg, #feda75, #d62976, #962fbf);
+    background-clip: text;
+    color: transparent;
+}
+
+.face i {
+    color: #0075FF;
+}
+
+.twitter i {
+    color: #00B2FF;
+}
+
+.mail i {
+    color: #FF0303;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* FOOTER MOBILE */
+
+.footer-mobile {
+    display: none;
+}
+
+/* Versão para Tablets */
+@media (min-width: 710px) and (max-width: 1133px) {
+
+    /* Menu versão Tablets*/
+    body {
+        background-image: url(../Image/Background\ -\ tablet\ version.jpg);
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .menu-lateral {
+        display: block;
+    }
+
+    .secao-title {
+        display: none
+    }
+
+    .secao-title-mobile {
+        display: block;
+        margin-bottom: 10%;
+    }
+
+    .apresentacao {
+        margin: 9vh 9% -10% 5%;
+    }
+
+    .barra-de-pesquisa {
+        margin-top: 50%;
+    }
+
+    /* Catálogo Desktop - Parte 1 */
+
+    .secao-filmes {
+        margin-top: 55%;
+    }
+
+    .filmes {
+        display: none;
+    }
+
+    .filmes-card {
+        display: none;
+    }
+
+    /* Catálogo Desktop - PARTE 1 (Mudança de cores no background) */
+    .secao-filmes2 {
+        display: none;
+    }
+
+    .filmes2 {
+        display: none;
+    }
+
+    /* Catálogo Versão tablet e Mobile */
+
+    /* Parte 1 - background normal */
+
+    .secao-filmes-mobile {
+        display: block;
+        color: var(--text-color);
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .filmes-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filme-card-mobile:hover {
+        transform: scale(1.05);
+        transition: 0.5s ease;
+    }
+
+    .poster-mobile img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* Parte 2 - background diferente */
+
+    .secao-filmes-mobile2 {
+        display: block;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        width: 90%;
+        padding: 36px;
+    }
+
+    .filmes-mobile2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filme-card-mobile2:hover {
+        transform: scale(1.1);
+        transition: 0.5s ease;
+    }
+
+    .poster-mobile2 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile2 h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile2 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* Parte 3 - background diferente */
+    .secao-filmes-mobile3 {
+        display: flex;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        padding: 36px;
+    }
+
+    .filmes-mobile3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filme-card-mobile3:hover {
+        transform: scale(1.1);
+        transition: 0.5s ease;
+    }
+
+    .poster-mobile3 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile3 h1 {
+        font-size: 25px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile3 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /* FOOTER Desktop versão */
+
+    .informacoes {
+        display: none;
+    }
+
+    /* mobile versão */
+    .footer-mobile {
+        display: none;
+    }
+
+    /* FOOTER TABLET */
+    .informacoes-tablet {
+        display: block;
+    }
+
+    .informacoes-container-tablet {
+        background-color: #1d1d1d;
+        padding: 40px;
+        color: var(--text-color);
+    }
+
+    .info-title-tablet {
+        font-size: 30px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .informacoes-container-tablet {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .footer-col h3 {
+        font-size: 14px;
+        margin-bottom: 15px;
+        color: #d6caa2;
+    }
+
+    /* LISTAS DO FOOTER */
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+        text-decoration: none;
+        color: #d6caa2;
+        transition: 0.2s ease;
+    }
+
+    .footer-col ul li a:hover {
+        color: #ffffff;
+    }
+
+    /* ícone das redes sociais */
+
+    .rede-sociais-tablet {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .services {
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+
+    .services a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .services a:hover {
+        color: white;
+        transition: 0.5s ease;
+    }
+
+    /* TEXTO FINAL */
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        text-transform: uppercase;
+    }
+
+    .footer-bottom p {
+        margin: 10px 0;
+        color: #d6caa2;
+    }
+
+}
+
+/* Responsividade mobile */
+@media (min-width: 370px) and (max-width: 710px) {
+    body {
+        background-image: url(../Image/Background\ -\ mobile\ version.jpg);
+    }
+
+    /* Menu Versão Desktop */
+    .apresentacao h1 {
+        font-size: 28px;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .botao-menu.ativo {
+        right: 290px;
+    }
+
+    .menu-lateral {
+        display: block;
+        width: 250px;
+    }
+
+    .apresentacao {
+        margin-top: 5vh;
+        margin-left: 8%;
+        margin-right: 16%;
+    }
+    .apresentacao h1 {
+        font-size: 36px;
+    }
+
+    .apresentacao h3 {
+        margin-bottom: 90%;
+        font-size: 20px;
+    }
+
+    .barra-de-pesquisa {
+        flex-direction: column;
+    }
+
+    #botao-pesquisa {
+        margin-top: 43px;
+    }
+
+    /* Catálogo Desktop - Parte 1 */
+
+    .secao-filmes {
+        display: block;
+        margin-top: 15%;
+    }
+
+    .filmes {
+        display: none;
+    }
+
+    .filmes-card {
+        display: none;
+    }
+
+    /* Catálogo Desktop - PARTE 1 (Mudança de cores no background) */
+    .secao-filmes2 {
+        display: none;
+    }
+
+    .filmes2 {
+        display: none;
+    }
+
+
+    /* Parte 1 - Catálogo Versão tablet e Mobile */
+
+    .secao-filmes-mobile {
+        display: block;
+        color: var(--text-color);
+        width: 90%;
+        margin: 78px auto;
+    }
+
+    .secao-title {
+        margin: 9px 0px 8%;
+    }
+
+    .filmes-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filme-card-mobile:hover {
+        transform: scale(1.05);
+        transition: 0.5s ease;
+    }
+
+    .poster-mobile img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile span {
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    /* Mobile PARTE 2 - background diferente */
+
+    .secao-filmes-mobile2 {
+        display: block;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        padding: 51px 15px;
+        height: 40%;
+    }
+
+    .filmes-mobile2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filme-card-mobile2:hover {
+        transform: scale(1.05);
+        transition: 0.5s ease;
+    }
+
+    .poster-mobile2 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile2 h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile2 span {
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    /* Terceira coluna de filmes (background diferente - Versão de Mobile) */
+    .secao-filmes-mobile3 {
+        display: flex;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .filmes-mobile3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+    }
+
+    .filme-card-mobile3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poster-mobile3 img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .filme-card-mobile3 h1 {
+        font-size: 13px;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .filme-card-mobile3 span {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    /*Footer versão (Desktop)*/
+
+    .informacoes {
+        display: none;
+    }
+
+    /*Footer versão (Tablet)*/
+    .informacoes-tablet {
+        display: none;
+    }
+
+    /*Footer versão (Mobile)*/
+    .footer-mobile {
+        display: block;
+        padding: 40px 20px;
+    }
+
+    .info-title-mobile {
+        color: var(--text-color);
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .info-rede-mobile {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .coluna-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .coluna-vertical li {
+        list-style: none;
+    }
+
+
+    .coluna-horizontal {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .coluna-horizontal li {
+        list-style: none;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .footer-links a:hover {
+        color: white;
+        transition: 0.5s ease;
+    }
+
+    .footer-copy {
+        color: var(--text-color);
+        margin-top: 50px;
+    }
+
+
+}
