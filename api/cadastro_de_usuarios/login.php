@@ -66,7 +66,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
         </div>
     </main>
 
-    <script src="../assets/JavaScript/login.js"></script>
+    <script src="/../assets/JavaScript/login.js"></script>
 </body>
 
 </html>
