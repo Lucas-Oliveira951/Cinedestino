@@ -1,6 +1,6 @@
 <?php
 
-include("conexao.php");
+//include("conexao.php");
 
 if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
     echo "<script> 
