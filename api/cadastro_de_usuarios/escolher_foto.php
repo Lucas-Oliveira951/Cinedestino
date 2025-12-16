@@ -25,10 +25,10 @@ if (isset($_GET['erro']) && $_GET['erro'] == "foto_grande") {
 }
 
 if (isset($_SESSION['cadastro_id'])) {
+$id_usuario = $_SESSION['cadastro_id'];
     die("Acesso negado. Esta pagina só está disponível após o cadastro.");
 }
 
-$id_usuario = $_SESSION['cadastro_id'];
 
 
 if (isset($_POST['enviar'])) {
