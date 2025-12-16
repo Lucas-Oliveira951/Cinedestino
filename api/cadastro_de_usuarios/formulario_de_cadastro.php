@@ -17,10 +17,14 @@ if (isset($_POST['enviar'])) {
                    ':senha' => $senha,
                    ]);
 
-    if ($stmt->execute()) {
+    if ($stmt->execute([
+                   ':nome' => $nome,
+                   ':email' => $email,
+                   ':senha' => $senha
+                   ])) {
 
         session_start();
-        $_SESSION['cadastro_id'] = $stmt->insert_id; // guarda o ID do usuário recém cadastrado
+        $_SESSION['cadastro_id'] = $stmt->lastInsertId; // guarda o ID do usuário recém cadastrado
 
         echo "<script> 
 
