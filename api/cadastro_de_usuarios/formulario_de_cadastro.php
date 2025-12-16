@@ -10,7 +10,7 @@ if (isset($_POST['enviar'])) {
 
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
-    $stmt = $mysqli->prepare($consulta_cadastro);
+    $stmt = $pdo->prepare($consulta_cadastro);
     $stmt->bind_param("sss", $nome, $email, $senha);
 
     if ($stmt->execute()) {
