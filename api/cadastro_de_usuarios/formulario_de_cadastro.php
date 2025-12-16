@@ -57,7 +57,7 @@ if (isset($_POST['enviar'])) {
     }
 
     $stmt = null;
-    $pdo = null;
+    //$pdo = null;
 }
 
 ?>
