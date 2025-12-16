@@ -24,7 +24,7 @@ if (isset($_POST['enviar'])) {
                    ])) {
 
         session_start();
-        $_SESSION['cadastro_id'] = $stmt->lastInsertId; // guarda o ID do usuário recém cadastrado
+        $_SESSION['cadastro_id'] = $pdo->lastInsertId; // guarda o ID do usuário recém cadastrado
 
         echo "<script> 
 
