@@ -56,7 +56,8 @@ if (isset($_POST['enviar'])) {
         echo "<p>Erro ao cadastrar!" . $stmt->error . "</p>";
     }
 
-    $stmt->close();
+    $stmt = null;
+    $pdo = null;
 }
 
 ?>
