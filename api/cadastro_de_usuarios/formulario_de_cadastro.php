@@ -9,9 +9,13 @@ if (isset($_POST['enviar'])) {
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
     // consulta para salvar as informações do usuario no banco de dados
-    $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+    $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
-    $stmt->bindParam("sss", $nome, $email, $senha);
+    $stmt->execute([
+                   ':nome' => $nome,
+                   ':email' => $email,
+                   ':senha' => $senha,
+                   ]);
 
     if ($stmt->execute()) {
 
