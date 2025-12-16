@@ -24,7 +24,7 @@ if (isset($_GET['erro']) && $_GET['erro'] == "foto_grande") {
         </script>";
 }
 
-if (!isset($_SESSION['cadastro_id'])) {
+if (isset($_SESSION['cadastro_id'])) {
     die("Acesso negado. Esta pagina só está disponível após o cadastro.");
 }
 
