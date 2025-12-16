@@ -61,7 +61,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
 
                 </div>
 
-                <p class="login-option">Não criou uma conta? <a href="../cadastro_de_usuarios/formulario_de_cadastro.php">Cadastrar</a></p>
+                <p class="login-option">Não criou uma conta? <a href="/../api/cadastro_de_usuarios/formulario_de_cadastro">Cadastrar</a></p>
             </form>
         </div>
     </main>
