@@ -92,12 +92,12 @@ if (isset($_POST['enviar'])) {
                 <div id="res">
 
                 </div>
-                <p class="login-option">Já criou uma conta? <a href="../cadastro_de_usuarios/login.php">Login</a></p>
+                <p class="login-option">Já criou uma conta? <a href="/../api/cadastro_de_usuarios/login">Login</a></p>
             </form>
         </div>
     </main>
 
-    <script src="../assets/JavaScript/cadastro.js"></script>
+    <script src="/../assets/JavaScript/cadastro.js"></script>
 </body>
 
 
