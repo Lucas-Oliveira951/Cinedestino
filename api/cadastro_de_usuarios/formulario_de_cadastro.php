@@ -11,7 +11,7 @@ if (isset($_POST['enviar'])) {
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
     $stmt = $pdo->prepare($consulta_cadastro);
-    $stmt->bind_param("sss", $nome, $email, $senha);
+    $stmt->bindParam("sss", $nome, $email, $senha);
 
     if ($stmt->execute()) {
 
