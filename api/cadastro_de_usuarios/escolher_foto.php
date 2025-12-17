@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <main class="conteudo">
         <div class="container-foto">
-            <form action="escolher_foto.php" method="post" enctype="multipart/form-data">
+            <form action="escolher_foto.php?token=<?= htmlspecialchars($_GET['token'])?>" method="post" enctype="multipart/form-data">
                 <div class="escolher-foto">
                     <label for="">Escolha uma foto para seu perfil:</label>
                     <div class="preview">
