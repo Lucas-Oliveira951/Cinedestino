@@ -23,8 +23,10 @@ if (isset($_POST['enviar'])) {
                    ':senha' => $senha
                    ])) {
 
+        $id_usuario = $pdo->lastInsertId();
+
         session_start();
-        $_SESSION['cadastro_id'] = $pdo->lastInsertId(); // guarda o ID do usuário recém cadastrado
+        $_SESSION['cadastro_id'] = $id_usuario; // guarda o ID do usuário recém cadastrado
 
         echo "<script> 
 
