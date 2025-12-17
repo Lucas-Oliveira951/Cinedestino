@@ -11,17 +11,13 @@ if (isset($_POST['enviar'])) {
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
-    $stmt->execute([
+    $sucesso = $stmt->execute([
                    ':nome' => $nome,
                    ':email' => $email,
                    ':senha' => $senha,
                    ]);
 
-    if ($stmt->execute([
-                   ':nome' => $nome,
-                   ':email' => $email,
-                   ':senha' => $senha
-                   ])) {
+    if ($sucesso) {
 
         $id_usuario = $pdo->lastInsertId();
 
