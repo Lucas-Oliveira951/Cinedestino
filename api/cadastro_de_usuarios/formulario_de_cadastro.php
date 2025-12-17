@@ -1,5 +1,4 @@
 <?php
-        session_start();
 include_once("conexao.php");
 
 //verifica se o usuario enviou o formulario
@@ -12,17 +11,23 @@ if (isset($_POST['enviar'])) {
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
-    $sucesso = $stmt->execute([
+   
+    if ( $stmt->execute([
                    ':nome' => $nome,
                    ':email' => $email,
                    ':senha' => $senha,
                    ]);
-
-    if ($sucesso) {
-
+) {
         $id_usuario = $pdo->lastInsertId();
 
-        $_SESSION['cadastro_id'] = $id_usuario; // guarda o ID do usuário recém cadastrado
+        $token = bin2hex(random_bytes(32));    
+
+            $pdo->prepare(
+                    "UPDATE usuarios SET token_cadastro = :token WHERE id = :id"
+            )->execute([
+                       ':token' => $token,
+                       ':id' => $id_usuario
+            ]);
 
         echo "<script> 
 
@@ -44,7 +49,7 @@ if (isset($_POST['enviar'])) {
         
         //mantem o usuario por tres segundos na pagina de cadastro e depois redireciona ele para pagina de escolher a foto para a conta
         setTimeout(function() {
-        window.location.href = 'escolher_foto.php'; 
+        window.location.href = 'escolher_foto.php?token=$token'; 
         }, 3000);
 
        });
