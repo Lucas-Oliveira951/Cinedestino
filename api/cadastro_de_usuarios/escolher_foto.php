@@ -130,7 +130,7 @@ if (isset($_POST['enviar'])) {
         </div>
     </main>
 
-    <script src="/Cinedestino-main/assets/JavaScript/previewFoto.js"></script>
+    <script src="/../assets/JavaScript/previewFoto.js"></script>
 </body>
 
 </html>
