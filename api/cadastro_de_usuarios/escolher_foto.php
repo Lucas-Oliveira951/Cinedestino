@@ -1,17 +1,27 @@
 <?php
-session_start();
 include_once("conexao.php");
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-exit;
 
-if (!isset($_SESSION['cadastro_id'])) {
+if (!isset($_GET['token'])) {
     die("Acesso negado. Esta pagina só está disponível após o cadastro.");
 }
-$id_usuario = $_SESSION['cadastro_id'];
 
+$token = $_GET['token'];
+
+$stmt = $pdo->prepare(
+    "SELECT id FROM usuarios WHERE token_cadastro = :token"
+);
+$stmt->execute([
+               ':token' => $token
+]);
+
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if(!$usuario) {
+    die("token inválido ou expirado");
+}
+
+$id_usuario = $usuario['id'];
 
 
 if (isset($_GET['erro']) && $_GET['erro'] == "foto_grande") {
