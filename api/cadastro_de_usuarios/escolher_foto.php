@@ -58,10 +58,14 @@ if (isset($_POST['enviar'])) {
         }
     }
 
-    $salvar_foto = $mysqli->prepare("UPDATE usuarios SET foto_perfil = ? WHERE id = ?");
-    $salvar_foto->bind_param("si", $foto_perfil, $id_usuario);
+    $salvar_foto = $pdo->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE id = :id");
+    $stmt->execute([
+                   ':foto' => $foto_perfil,
+                    ':id' => $id_usuario
+    ]);
 
-    if ($salvar_foto->execute()) {
+    if ($salvar_foto->execute([ ':foto' => $foto_perfil,
+                    ':id' => $id_usuario])) {
 
         //remove o id da sessao
         unset($_SESSION['cadastro_id']);
