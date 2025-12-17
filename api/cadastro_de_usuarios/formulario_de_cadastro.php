@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <input type="submit" id="Button" name="enviar" onclick="Criar()" value="Criar uma conta">
                 <div id="res" data-tipo="<?= $tipo ?>" data-redirect="<?= $redirect ?>">
-
+                  <?= $mensagem ?>
                 </div>
                 <p class="login-option">Já criou uma conta? <a href="../cadastro_de_usuarios/login.php">Login</a></p>
             </form>
@@ -98,8 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     window.location.href = res.dataset.redirect;
                 }, 3000);
             }
-
-
         });
     </script>
     
