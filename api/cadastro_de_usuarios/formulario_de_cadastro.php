@@ -1,4 +1,5 @@
 <?php
+        session_start();
 include_once("conexao.php");
 
 //verifica se o usuario enviou o formulario
@@ -8,7 +9,6 @@ if (isset($_POST['enviar'])) {
     $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-        session_start();
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
