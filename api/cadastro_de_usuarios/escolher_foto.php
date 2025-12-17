@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tipo = "erro";
         } else {
 
-            $arquivo = "foto_definida/" . uniqid() . "." . $ext;
+            $arquivo = "/tmp/" . uniqid() . "." . $ext;
 
             if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $arquivo)) {
 
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':id' => $id_usuario
                 ]);
 
-                $mensagem = "Mensagem enviada! Indo para login...";
+                $mensagem = "Imagem enviada! Indo para login...";
                 $tipo = "sucesso";
                 $redirect = "login.php";
             } else {
