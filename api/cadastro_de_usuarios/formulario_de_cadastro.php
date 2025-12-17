@@ -12,7 +12,7 @@ if (isset($_POST['enviar'])) {
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
    
-    if ( $stmt->execute([
+    if ($stmt->execute([
                    ':nome' => $nome,
                    ':email' => $email,
                    ':senha' => $senha,
