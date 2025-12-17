@@ -1,138 +1,109 @@
 <?php
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+include_once("conexao.php");
 
-require_once "conexao.php";
+$mensagem = null;
+$tipo = null;
+$redirect = null;
 
-$cadastro_sucesso = false;
-$token = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-// Verifica envio do formulário
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
-
-    $nome  = trim($_POST['nome']);
+    $nome = trim($_POST['nome']);
     $email = trim($_POST['email']);
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-    // Cadastro do usuário
-    $stmt = $pdo->prepare(
-        "INSERT INTO usuarios (nome, email, senha)
-         VALUES (:nome, :email, :senha)"
-    );
+    $stmt = $pdo->prepare("INSERT INTO usuarios(nome, email, senha) VALUES (:nome, :email, :senha)");
 
     if ($stmt->execute([
-        ':nome'  => $nome,
+        ':nome' => $nome,
         ':email' => $email,
-        ':senha' => $senha
+        ':senha' => $senha,
     ])) {
 
-        $id_usuario = $pdo->lastInsertId();
+        $id = $pdo->lastInsertId();
 
-        // Gera token de cadastro
         $token = bin2hex(random_bytes(32));
 
         $pdo->prepare(
-            "UPDATE usuarios
-             SET token_cadastro = :token
-             WHERE id = :id"
+            "UPDATE usuarios 
+                       SET token_cadastro = :token 
+                       WHERE id = :id"
         )->execute([
             ':token' => $token,
-            ':id'    => $id_usuario
+            ':id' => $id
         ]);
 
-        $cadastro_sucesso = true;
+        $mensagem = "Conta criada com sucesso! Redirecionando...";
+        $tipo = "sucesso";
+        $redirect = "escolher_foto.php?token=$token";
     }
 }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-    <link rel="shortcut icon"
-          href="/assets/Image/favicon.ico"
-          type="image/x-icon">
-
-    <link rel="stylesheet"
-          href="/assets/css/cadastro.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/Cinedestino-main/assets/Image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/cadastro.css">
     <title>Criar Conta</title>
 </head>
 
 <body>
-<main class="conteudo">
-    <div class="container-login">
-        <form action="formulario_de_cadastro.php" method="post">
-            <h1>Crie sua conta gratuita</h1>
+    <main class="conteudo">
+        <div class="container-login">
+            <form action="formulario_de_cadastro.php" method="post" enctype="multipart/form-data">
+                <h1>Crie sua conta gratuita</h1>
 
-            <label for="nome">Nome Completo</label>
-            <input type="text" name="nome" id="nome"
-                   class="inputUser"
-                   placeholder="Insira seu nome completo aqui"
-                   required>
+                <label for="nome">Nome Completo</label>
+                <input type="text" name="nome" id="nome" class="inputUser" placeholder="Insira seu nome completo aqui." required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="inputUser" placeholder="Digite seu e-mail aqui." required>
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="Senha" class="inputUser" placeholder="Digite sua senha aqui." required>
 
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email"
-                   class="inputUser"
-                   placeholder="Digite seu e-mail aqui"
-                   required>
+                <input type="submit" id="Button" name="enviar" onclick="Criar()" value="Criar uma conta">
+                <div id="res" data-tipo="<?= $tipo ?>" data-redirect="<?= $redirect ?>">
 
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha"
-                   class="inputUser"
-                   placeholder="Digite sua senha"
-                   required>
+                </div>
+                <p class="login-option">Já criou uma conta? <a href="../cadastro_de_usuarios/login.php">Login</a></p>
+            </form>
+        </div>
+    </main>
 
-            <input type="submit"
-                   id="Button"
-                   name="enviar"
-                   value="Criar uma conta">
+    <script src="../assets/JavaScript/cadastro.js"></script>
 
-            <!-- Mensagem de resposta -->
-            <div id="res">
-                <?php if ($cadastro_sucesso): ?>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Conta criada com sucesso! Redirecionando...
-                <?php endif; ?>
-            </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const res = document.getElementById('res');
 
-            <p class="login-option">
-                Já criou uma conta?
-                <a href="/api/cadastro_de_usuarios/login">Login</a>
-            </p>
-        </form>
-    </div>
-</main>
+            if (!res || !res.textContent.trim()) return;
 
-<!-- JS SEMPRE NO FINAL -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const sucesso = <?= json_encode($cadastro_sucesso) ?>;
-    const token   = <?= json_encode($token) ?>;
+            if (res.dataset.tipo === 'sucesso') {
+                res.style.padding = '20px';
+                res.style.background = '#57ff093f';
+                res.style.borderRadius = '10px';
+                res.style.display = 'flex';
+                res.style.alignItems = 'center';
+                res.style.gap = '10px';
+            }
 
-    if (sucesso && token) {
-        const res = document.getElementById('res');
+            if (res.dataset.redirect) {
+                setTimeout(() => {
+                    window.location.href = res.dataset.redirect;
+                }, 3000);
+            }
 
-        res.style.padding = '20px';
-        res.style.background = '#57ff093f';
-        res.style.color = '#9ba5a2ff';
-        res.style.borderRadius = '10px';
-        res.style.display = 'flex';
-        res.style.alignItems = 'center';
-        res.style.gap = '10px';
 
-        setTimeout(() => {
-            window.location.href = `escolher_foto.php?token=${token}`;
-        }, 3000);
-    }
-});
-</script>
-
+        });
+    </script>
 </body>
+
+
 </html>
