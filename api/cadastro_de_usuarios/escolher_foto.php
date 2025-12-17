@@ -2,6 +2,11 @@
 session_start();
 include_once("conexao.php");
 
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+exit;
+
 if (!isset($_SESSION['cadastro_id'])) {
     die("Acesso negado. Esta pagina só está disponível após o cadastro.");
 }
