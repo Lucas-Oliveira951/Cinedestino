@@ -23,7 +23,7 @@ if (isset($_POST['enviar'])) {
         $token = bin2hex(random_bytes(32));    
 
             $pdo->prepare(
-                    "UPDATE usuarios SET token_cadastro = :token WHERE id = :id";
+                    "UPDATE usuarios SET token_cadastro = :token WHERE id = :id"
             )->execute([
                        ':token' => $token,
                        ':id' => $id_usuario
