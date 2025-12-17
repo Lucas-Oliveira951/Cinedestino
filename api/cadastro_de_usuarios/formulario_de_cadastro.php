@@ -44,7 +44,7 @@ if (isset($_POST['enviar'])) {
         
         //mantem o usuario por tres segundos na pagina de cadastro e depois redireciona ele para pagina de escolher a foto para a conta
         setTimeout(function() {
-        window.location.href = 'escolher_foto'; 
+        window.location.href = 'escolher_foto.php'; 
         }, 3000);
 
        });
