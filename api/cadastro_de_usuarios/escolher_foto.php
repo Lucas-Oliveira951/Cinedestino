@@ -1,12 +1,12 @@
 <?php
 session_start();
+include_once("conexao.php");
 
 if (!isset($_SESSION['cadastro_id'])) {
     die("Acesso negado. Esta pagina só está disponível após o cadastro.");
 }
 $id_usuario = $_SESSION['cadastro_id'];
 
-include_once("conexao.php");
 
 
 if (isset($_GET['erro']) && $_GET['erro'] == "foto_grande") {
