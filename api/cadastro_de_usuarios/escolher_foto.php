@@ -27,7 +27,7 @@ $id_usuario = $usuario['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $foto_perfil = "/foto_nao_definida/default.png";
+    $foto_perfil = "/../foto_nao_definida/default.png";
 
     if (!empty($_FILES['foto_perfil']['name'])) {
 
