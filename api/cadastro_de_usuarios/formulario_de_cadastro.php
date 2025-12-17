@@ -8,6 +8,7 @@ if (isset($_POST['enviar'])) {
     $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
+        session_start();
     // consulta para salvar as informações do usuario no banco de dados
     $consulta_cadastro = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
     $stmt = $pdo->prepare($consulta_cadastro);
@@ -21,7 +22,6 @@ if (isset($_POST['enviar'])) {
 
         $id_usuario = $pdo->lastInsertId();
 
-        session_start();
         $_SESSION['cadastro_id'] = $id_usuario; // guarda o ID do usuário recém cadastrado
 
         echo "<script> 
