@@ -58,7 +58,8 @@ if (isset($_POST['enviar'])) {
         }
     }
 
-    $salvar_foto = $pdo->prepare("UPDATE usuarios SET foto_perfil = :foto WHERE id = :id");
+    $salvar_foto = "UPDATE usuarios SET foto_perfil = :foto WHERE id = :id";
+    $stmt = $pdo->prepare($salvar_foto);
     $stmt->execute([
                    ':foto' => $foto_perfil,
                     ':id' => $id_usuario
