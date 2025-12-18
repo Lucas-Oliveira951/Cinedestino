@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . "/../api/cadastro_de_usuarios/conexao.php";
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: /cadastro_de_usuarios/login.php");
+    header("Location: /../api/cadastro_de_usuarios/login.php");
     exit;
 }
 
