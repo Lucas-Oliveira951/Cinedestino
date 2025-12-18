@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . "/cadastro_de_usuarios/config_sessao.php";
 require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
-
+var_dump($_SESSION);
+exit;
 
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: /api/cadastro_de_usuarios/login.php");
