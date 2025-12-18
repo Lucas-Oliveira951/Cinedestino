@@ -1,28 +1,31 @@
 <?php
-require_once __DIR__ . "/cadastro_de_usuarios/config_sessao.php";
-require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
-var_dump($_SESSION);
-exit;
 
-if (!isset($_SESSION['id_usuario'])) {
+require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
+
+if (!isset($_COOKIE['auth_token'])) {
     header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
 
-$foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
-$id_usuario = $_SESSION['id_usuario'];
-$nomeCompleto = $_SESSION['nome'] ?? 'Usuário';
-$primeiroNome = explode(' ', $nomeCompleto)[0];
+$stmt = $pdo->prepare("SELECT id, nome, email, foto_perfil FROM usuarios WHERE token_login = :token LIMIT 1");
+$stmt->execute([
+    ':token' => $_COOKIE['auth_token']
+]);
 
-
-$stmt = $pdo->prepare("SELECT foto_perfil FROM usuarios WHERE id = :id");
-$stmt->execute([':id' => $id_usuario]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($usuario && !empty($usuario['foto_perfil'])) {
-    $foto_perfil = $usuario['foto_perfil'];
+if (!$usuario) {
+    header("Location: /api/cadastro_de_usuarios/login.php");
+    exit;
 }
 
+//$foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
+$id_usuario = $usuario['id'];
+$nomeCompleto = $usuario['nome'];
+$primeiroNome = explode(' ', $nomeCompleto)[0];
+
+$foto_perfil = $usuario['foto_perfil']
+    ?: "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
 
 ?>
 
@@ -53,7 +56,7 @@ if ($usuario && !empty($usuario['foto_perfil'])) {
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
-            <img src="<?= htmlspecialchars($foto_perfil) ?>" class="foto_de_perfil" alt="foto de perfil">
+            <img src="../Cinedestino-main/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
 
         <!-- Versão responsiva de menu para Tablets e celulares -->
