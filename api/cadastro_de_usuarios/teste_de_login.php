@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
 
-if (!$email || $senha) {
+if (!$email || !$senha) {
     header("Location: login.php?erro=campos");
     exit;
 }
@@ -28,10 +28,24 @@ if (!$usuario || !password_verify($senha, $usuario['senha'])) {
 }
 
 
+$token = bin2hex(random_bytes(32));
+
+// salva token no banco
+$update = $pdo->prepare("
+    UPDATE usuarios 
+    SET auth_token = :token 
+    WHERE id = :id
+");
+$update->execute([
+    ':token' => $token,
+    ':id' => $usuario['id']
+]);
+
+// cookie seguro
 setcookie(
     'auth_token',
     $token,
-    time() + 86400, //1 dia
+    time() + 86400, // 1 dia
     '/',
     '',
     isset($_SERVER['HTTPS']),
