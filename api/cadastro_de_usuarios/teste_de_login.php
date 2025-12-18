@@ -1,36 +1,53 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 session_start();
 
-if (isset($_POST['email'])) {
+include("conexao.php");
 
-    include("conexao.php");
-
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    $sql_consulta = "SELECT * FROM usuarios WHERE email = '$email' LIMIT 1";
-    $sql_exec = $mysqli->query($sql_consulta) or die($mysqli->error);
-
-    $usuario = $sql_exec->fetch_assoc();
-    $_SESSION['email'] = $usuario['email'];
-    $_SESSION['senha'] = $usuario['senha'];
-    $_SESSION['id_usuario'] = $usuario['id'];
-    $_SESSION['nome'] = $usuario['nome'];
-
-    if (password_verify($senha, $usuario['senha'])) {
-
-        echo "Logado com sucesso!";
-
-        header('Location: login.php?sucesso=1');
-        //exit;
-    } else {
-        echo "Falha ao logar!";
-
-        header('Location: login.php?erro=1');
-        exit;
-    }
-} else {
-    header('Location: login.php');
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: login.php");
     exit;
 }
+
+$email = trim($_POST['email'] ?? '');
+$senha = $_POST['senha'] ?? '';
+
+if (!$email || !$senha) {
+    header("Location: login.php?erro=1");
+    exit;
+}
+
+$stmt = $pdo->prepare("
+    SELECT id, nome, email, foto_perfil
+    FROM usuarios 
+    WHERE email = :email
+    LIMIT 1
+    ");
+
+$stmt->execute([
+    ':email' => $email
+]);
+
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+    header("Location: login.php?erro=login");
+    exit;
+}
+
+if (!password_verify($senha, $usuario['senha'])) {
+    header("Location: login.php?erro=login");
+    exit;
+}
+
+
+
+$_SESSION['id_usuario'] = $usuario['id'];
+$_SESSION['nome'] = $usuario['nome'];
+$_SESSION['email'] = $usuario['email'];
+$_SESSION['foto_perfil'] = $usuario['foto_perfil'];
+
+header("Location: cinedestino.php");
+exit;
