@@ -1,4 +1,7 @@
 <?php
+ini_set('session.cookie_path', '/');
+ini_set('session.cookie_secure', '1');
+ini_set('session.cookie_samesite', 'Lax');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
