@@ -7,6 +7,8 @@ include_once("conexao.php");
 $mensagem = null;
 $tipo = null;
 $redirect = null;
+$supabaseUrl = $_ENV['SUPABASE_URL'];
+$serviceKey = $_ENV['SUPABASE_SERVICE_KEY'];
 
 if (!isset($_GET['token'])) {
     die("Acesso negado.");
