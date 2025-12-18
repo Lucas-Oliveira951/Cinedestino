@@ -32,7 +32,7 @@ $token = bin2hex(random_bytes(32));
 
 $update = $pdo->prepare("
     UPDATE usuarios 
-    SET auth_token = :token 
+    SET token_login = :token 
     WHERE id = :id
 ");
 $update->execute([
@@ -40,7 +40,7 @@ $update->execute([
     ':id'    => $usuario['id']
 ]);
 
-setcookie('auth_token', $token, [
+setcookie('token_login', $token, [
     'expires'  => time() + 86400,
     'path'     => '/',
     'secure'   => true,
