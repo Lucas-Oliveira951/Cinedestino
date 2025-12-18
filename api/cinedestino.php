@@ -1,5 +1,5 @@
 <?php
-require_once "/api/cadastro_de_usuarios/conexao.php";
+require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
 
 $token = $_COOKIE['token_login'] ?? null;
 
