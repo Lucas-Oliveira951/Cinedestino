@@ -1,7 +1,6 @@
 <?php
-require_once "config_sessao.php";
-require_once "conexao.php";
 
+require_once "conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
@@ -11,22 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
 
-if (!$email || !$senha) {
+if (!$email || $senha) {
     header("Location: login.php?erro=campos");
     exit;
 }
 
-$stmt = $pdo->prepare("
-    SELECT id, nome, email, senha, foto_perfil
-    FROM usuarios 
-    WHERE email = :email
-    LIMIT 1
-    ");
+$stmt = $pdo->prepare("SELECT id, nome, email, senha FROM usuarios WHERE email = :email LIMIT 1");
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-var_dump($_SESSION);
-exit;
 
 if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     header("Location: login.php?erro=login");
@@ -34,10 +25,15 @@ if (!$usuario || !password_verify($senha, $usuario['senha'])) {
 }
 
 
-$_SESSION['id_usuario'] = $usuario['id'];
-$_SESSION['nome'] = $usuario['nome'];
-$_SESSION['email'] = $usuario['email'];
-$_SESSION['foto_perfil'] = $usuario['foto_perfil'];
+setcookie(
+    'auth_token',
+    $token,
+    time() + 86400, //1 dia
+    '/',
+    '',
+    isset($_SERVER['HTTPS']),
+    true
+);
 
 header("Location: /api/cinedestino.php");
 exit;
