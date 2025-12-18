@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("/../api/cadastro_de_usuarios/conexao.php");
+include("/../cadastro_de_usuarios/conexao.php");
 
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: /cadastro_de_usuarios/login.php");
