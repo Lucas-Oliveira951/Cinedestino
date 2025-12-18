@@ -8,10 +8,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once __DIR__ . "/../api/cadastro_de_usuarios/conexao.php";
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-exit;
+// echo '<pre>';
+// var_dump($_SESSION);
+// echo '</pre>';
+// exit;
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
