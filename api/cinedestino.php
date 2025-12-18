@@ -3,12 +3,6 @@ require_once __DIR__ . "/cadastro_de_usuarios/config_sessao.php";
 require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
 
 
-
-
-// echo '<pre>';
-// var_dump($_SESSION);
-// echo '</pre>';
-// exit;
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
