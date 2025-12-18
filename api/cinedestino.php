@@ -1,12 +1,12 @@
 <?php
-ini_set('session.cookie_path', '/');
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS']) ? '1' : '0');
-ini_set('session.cookie_samesite', 'Lax');
+require_once __DIR__ . "/cadastro_de_usuarios/config_sessao.php";
+require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . "/../api/cadastro_de_usuarios/conexao.php";
+
 
 // echo '<pre>';
 // var_dump($_SESSION);
