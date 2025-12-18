@@ -28,6 +28,9 @@ $stmt = $pdo->prepare("
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+var_dump($usuario);
+exit;
+
 if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     header("Location: login.php?erro=login");
     exit;
