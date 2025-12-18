@@ -27,46 +27,79 @@ if (!$usuario) {
 
 $id_usuario = $usuario['id'];
 
+function uploadSupabase($tmpFile, $nomeArquivo, $mimeType)
+{
+    $supabaseUrl = $_ENV['SUPABASE_URL'];
+    $serviceKey  = $_ENV['SUPABASE_SERVICE_KEY'];
+
+    $bucket = 'fotos-perfil';
+    $path   = "usuarios/$nomeArquivo";
+
+    $url = "$supabaseUrl/storage/v1/object/$bucket/$path?upsert=true";
+
+    $file = file_get_contents($tmpFile);
+
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS    => $file,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => [
+            "Authorization: Bearer $serviceKey",
+            "Content-Type: $mimeType"
+        ]
+    ]);
+
+    $response = curl_exec($ch);
+    $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if (!in_array($status, [200, 201, 204])) {
+        return false;
+    }
+
+    return "$supabaseUrl/storage/v1/object/public/$bucket/$path";
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!isset($_FILES['foto_perfil']) || $_FILES['foto_perfil']['error'] !== UPLOAD_ERR_OK) {
+        die("Erro no envio do arquivo");
+    }
 
     $foto_perfil = "/../foto_nao_definida/default.png";
 
-    if (!empty($_FILES['foto_perfil']['name'])) {
+    $ext = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
+    $permitidos = ['jpg', 'jpeg', 'png'];
 
-        $ext = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
-        $permitidos = ['jpg', 'jpeg', 'png'];
-
-        if (!in_array($ext, $permitidos)) {
-            $mensagem = "Formato inválido. Apenas JPG e PNG.";
-            $tipo = "erro";
-        } elseif ($_FILES['foto_perfil']['size'] > 10 * 1024 * 1024) {
-            $mensagem = "Imagem muito grande! Máx 10MB.";
-            $tipo = "erro";
-        } else {
-
-            $arquivo = "/tmp/" . uniqid() . "." . $ext;
-
-            if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $arquivo)) {
-
-                $pdo->prepare(
-                    "UPDATE usuarios
-                     SET foto_perfil = :foto,
-                     token_cadastro = NULL
-                     WHERE id = :id"
-                )->execute([
-                    ':foto' => $arquivo,
-                    ':id' => $id_usuario
-                ]);
-
-                $mensagem = "Imagem enviada! Indo para login...";
-                $tipo = "sucesso";
-                $redirect = "login.php";
-            } else {
-                $mensagem = "Erro ao salvar a imagem.";
-                $tipo = "erro";
-            }
-        }
+    if (!in_array($ext, $permitidos)) {
+        die("Formato inválido");
     }
+
+    $nomeArquivo = uniqid() . ".$ext";
+
+    $urlFoto = uploadSupabase(
+        $_FILES['foto_perfil']['tmp_name'],
+        $nomeArquivo,
+        $_FILES['foto_perfil']['type']
+    );
+
+    if (!$urlFoto) {
+        die("Erro ao salvar imagem!");
+    }
+
+    $stmt = $pdo->prepare(
+        "
+        UPDATE usuarios
+        SET foto_perfil = :foto,
+            token_cadastro = NULL
+        WHERE id = :id"
+    );
+    $stmt->execute([
+        ':foto' => $urlFoto,
+        ':id' => $id_usuario
+    ]);
 }
 
 
@@ -87,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <main class="conteudo">
         <div class="container-foto">
-            <form action="escolher_foto.php?token=<?= htmlspecialchars($_GET['token'])?>" method="post" enctype="multipart/form-data">
+            <form action="escolher_foto.php?token=<?= htmlspecialchars($_GET['token']) ?>" method="post" enctype="multipart/form-data">
                 <div class="escolher-foto">
                     <label for="">Escolha uma foto para seu perfil:</label>
                     <div class="preview">
