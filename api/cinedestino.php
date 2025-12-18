@@ -13,7 +13,7 @@ var_dump($_SESSION);
 echo '</pre>';
 exit;
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: /api/cadastro_de_usuarios/login");
+    header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
 
