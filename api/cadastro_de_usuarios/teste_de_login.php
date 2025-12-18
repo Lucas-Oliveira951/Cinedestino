@@ -14,22 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
 
-if (!$email || !$senha) {
-    header("Location: login.php?erro=1");
+if (empty($email) || empty($senha)) {
+    header("Location: login.php?erro=campos");
     exit;
 }
 
 $stmt = $pdo->prepare("
-    SELECT id, nome, email, foto_perfil
+    SELECT id, nome, senha
     FROM usuarios 
     WHERE email = :email
     LIMIT 1
     ");
-
-$stmt->execute([
-    ':email' => $email
-]);
-
+$stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
