@@ -1,13 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-ini_set('session.cookie_path', '/');
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS']) ? '1' : '0');
-ini_set('session.cookie_samesite', 'Lax');
+require_once "config_sessao.php";
+require_once "conexao.php";
 
 session_start();
 
-include("conexao.php");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
