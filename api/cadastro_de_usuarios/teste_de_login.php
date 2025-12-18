@@ -45,5 +45,5 @@ $_SESSION['nome'] = $usuario['nome'];
 $_SESSION['email'] = $usuario['email'];
 $_SESSION['foto_perfil'] = $usuario['foto_perfil'];
 
-header("Location: /../api/cinedestino.php");
+header("Location: /api/cinedestino.php");
 exit;
