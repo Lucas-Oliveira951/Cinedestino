@@ -2,9 +2,6 @@
 require_once __DIR__ . "/cadastro_de_usuarios/config_sessao.php";
 require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 
 
@@ -18,7 +15,8 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 $foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
-$id_usuario = $_SESSION['id_usuario'] ?? 'Usuario';
+$id_usuario = $_SESSION['id_usuario'];
+$nomeCompleto = $_SESSION['nome'] ?? 'Usuário';
 $primeiroNome = explode(' ', $nomeCompleto)[0];
 
 
@@ -60,7 +58,7 @@ if ($usuario && !empty($usuario['foto_perfil'])) {
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
-            <img src="../Cinedestino-main/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
+            <img src="<?= htmlspecialchars($foto_perfil) ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
 
         <!-- Versão responsiva de menu para Tablets e celulares -->
