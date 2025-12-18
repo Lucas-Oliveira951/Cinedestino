@@ -3,41 +3,26 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("cadastro_de_usuarios/conexao.php");
+include("/../cadastro_de_usuarios/conexao.php");
 
-$id_usuario = $_SESSION['id_usuario'] ?? null;
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: /cadastro_de_usuarios/logiin.php");
+    exit;
+}
+
 $foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
+$id_usuario = $_SESSION['id_usuario'] ?? 'Usuario';
+$primeiroNome = explode(' ', $nomeCompleto)[0];
 
-if ($id_usuario) {
-    $consulta_foto = "SELECT foto_perfil FROM usuarios WHERE id = ?";
-    $stmt = $mysqli->prepare($consulta_foto);
-    $stmt->bind_param("i", $id_usuario);
-    $stmt->execute();
-    $stmt->bind_result($foto);
 
-    if ($stmt->fetch()) {
+$stmt = $pdo->prepare("SELECT foto_perfil FROM usuarios WHERE id = :id");
+$stmt->execute([':id' => $id_usuario]);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!empty($foto)) {
-            $foto_perfil = $foto;
-        }
-    }
-
-    $stmt->close();
+if ($usuario && !empty($usuario['foto_perfil'])) {
+    $foto_perfil = $usuario['foto_perfil'];
 }
 
-if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['email']);
-    unset($_SESSION['senha']);
-    header('Location: /Cinedestino-main/cadastro_de_usuarios/login.php');
-}
-
-$logado = $_SESSION['email'];
-$nome = $_SESSION['nome'] ?? 'Usuário';
-$nomeCompleto = $_SESSION['nome'] ?? '';
-$primeiroNome = explode(
-    ' ',
-    $nomeCompleto
-)[0];
 
 ?>
 
