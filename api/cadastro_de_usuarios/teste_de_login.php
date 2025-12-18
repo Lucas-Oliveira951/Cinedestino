@@ -1,7 +1,5 @@
 <?php
-
 require_once "conexao.php";
-
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
@@ -16,7 +14,12 @@ if (!$email || !$senha) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT id, nome, email, senha FROM usuarios WHERE email = :email LIMIT 1");
+$stmt = $pdo->prepare("
+    SELECT id, senha 
+    FROM usuarios 
+    WHERE email = :email 
+    LIMIT 1
+");
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -25,10 +28,8 @@ if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     exit;
 }
 
-
 $token = bin2hex(random_bytes(32));
 
-// salva token no banco
 $update = $pdo->prepare("
     UPDATE usuarios 
     SET auth_token = :token 
@@ -36,19 +37,16 @@ $update = $pdo->prepare("
 ");
 $update->execute([
     ':token' => $token,
-    ':id' => $usuario['id']
+    ':id'    => $usuario['id']
 ]);
 
-// cookie seguro
-setcookie(
-    'auth_token',
-    $token,
-    time() + 86400, // 1 dia
-    '/',
-    '',
-    isset($_SERVER['HTTPS']),
-    true
-);
+setcookie('auth_token', $token, [
+    'expires'  => time() + 86400,
+    'path'     => '/',
+    'secure'   => true,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
 
 header("Location: /api/cinedestino.php");
 exit;
