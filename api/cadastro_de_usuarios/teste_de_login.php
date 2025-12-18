@@ -39,5 +39,5 @@ $_SESSION['nome'] = $usuario['nome'];
 $_SESSION['email'] = $usuario['email'];
 $_SESSION['foto_perfil'] = $usuario['foto_perfil'];
 
-header("Location: cinedestino.php");
+header("Location: /../cinedestino.php");
 exit;
