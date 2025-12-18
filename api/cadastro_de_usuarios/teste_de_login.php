@@ -2,8 +2,6 @@
 require_once "config_sessao.php";
 require_once "conexao.php";
 
-session_start();
-
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
