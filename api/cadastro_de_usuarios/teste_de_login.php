@@ -1,6 +1,9 @@
 <?php
 
 require_once "conexao.php";
+echo '<pre>';
+var_dump($_POST);
+exit;
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
