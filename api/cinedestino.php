@@ -1,5 +1,5 @@
 <?php
-require_once "conexao.php";
+require_once "/cadastro_de_usuarios/conexao.php";
 
 $token = $_COOKIE['token_login'] ?? null;
 
