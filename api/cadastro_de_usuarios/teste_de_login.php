@@ -40,10 +40,12 @@ $update->execute([
     ':id'    => $usuario['id']
 ]);
 
+$secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+
 setcookie('token_login', $token, [
     'expires'  => time() + 86400,
     'path'     => '/',
-    'secure'   => true,
+    'secure'   => $secure,
     'httponly' => true,
     'samesite' => 'Lax'
 ]);
