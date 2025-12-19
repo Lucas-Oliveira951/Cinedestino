@@ -40,7 +40,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="/../assets/Image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/../assets/css/style.css">
-    <title>Cine</title>
+    <title>Ce</title>
 </head>
 
 <body>
