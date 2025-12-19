@@ -7,8 +7,16 @@ include_once("conexao.php");
 $mensagem = null;
 $tipo = null;
 $redirect = null;
+
+if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+$mensagem = null;
+$tipo = null;
+$redirect = null;
+}
+
 $supabaseUrl = $_ENV['SUPABASE_URL'];
 $serviceKey = $_ENV['SUPABASE_SERVICE_KEY'];
+
 
 if (!isset($_GET['token'])) {
     die("Acesso negado.");
@@ -62,7 +70,7 @@ function uploadSupabase($tmpFile, $nomeArquivo, $mimeType)
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
 
     if (!isset($_FILES['foto_perfil']) || $_FILES['foto_perfil']['error'] !== UPLOAD_ERR_OK) {
         die("Erro no envio do arquivo");
