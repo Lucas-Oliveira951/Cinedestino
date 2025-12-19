@@ -101,7 +101,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
             <article class="filmes">
                 <div class="filme-card">
                     <div class="poster">
-                        <a href="assets/filmes page/Caminho da Luz/index.html">
+                        <a href="/../assets/filmes page/Caminho da Luz/index.html">
                             <img src="/../assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
                                 title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
                         </a>
@@ -115,7 +115,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme 2 -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
+                        <img src="/../assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
                             title="O Milagre em Roma  (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -127,7 +127,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme 3 -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
+                        <img src="/../assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
                             title="Chama do Perdão (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -139,7 +139,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme 4 -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
+                        <img src="/../assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
                             title="O Peregrino de Assis (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -151,7 +151,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme 4 -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
+                        <img src="/../assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
                             title="O Silêncio do Mosteiro (Criado por Gemni IA e Chat GPT )">
                     </div>
                     <div class="filme-descricao">
@@ -170,7 +170,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
             <article class="filmes2">
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
+                        <img src="/../assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
                             title="Lágrimas de Esperança (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -182,7 +182,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!--  Filme 2 (background diferente) -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
+                        <img src="/../assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
                             title="Sob o Manto da Virgem (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -194,7 +194,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!--  Filme 3 (background diferente)-->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
+                        <img src="/../assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
                             title="As Pegadas de Pedro (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -206,7 +206,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!--  Filme 4 (background diferente) -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/A Última Capela.jpg" alt="A Última Capela"
+                        <img src="/../assets/Image/A Última Capela.jpg" alt="A Última Capela"
                             title="A Última Capela (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -218,7 +218,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme 5 (background diferente) -->
                 <div class="filme-card">
                     <div class="poster">
-                        <img src="assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
+                        <img src="/../assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
                             title="Entre Rosários e Estrelas (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
@@ -238,9 +238,9 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
 
                 <!-- Filme mobile 1-->
                 <div class="filme-card-mobile">
-                    <div class="poster-mobile"><a href="assets/filmes page/Caminho da Luz/index.html">
+                    <div class="poster-mobile"><a href="/../assets/filmes page/Caminho da Luz/index.html">
 
-                            <img src="assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
+                            <img src="/../assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
                                 title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
                         </a>
                     </div>
@@ -253,7 +253,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme mobile 2-->
                 <div class="filme-card-mobile">
                     <div class="poster-mobile">
-                        <img src="assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
+                        <img src="/../assets/Image/O Milagre em Roma.jpg" alt="O Milagre em Roma"
                             title="O Milagre em Roma  (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile">
@@ -265,7 +265,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!--  Filme mobile 3 -->
                 <div class="filme-card-mobile">
                     <div class="poster-mobile">
-                        <img src="assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
+                        <img src="/../assets/Image/Chama do Perdão.jpg" alt="Chama do Perdão"
                             title="Chama do Perdão (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile">
@@ -285,7 +285,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
             <article class="filmes-mobile2">
                 <div class="filme-card-mobile2">
                     <div class="poster-mobile2">
-                        <img src="assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
+                        <img src="/../assets/Image/O Peregrino de Assis.jpg" alt="O Peregrino de Assis"
                             title="O Peregrino de Assis (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile2">
@@ -297,7 +297,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme mobile 1 (background diferente - Versão de Mobile) -->
                 <div class="filme-card-mobile2">
                     <div class="poster-mobile2">
-                        <img src="assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
+                        <img src="/../assets/Image/O Silêncio do Mosteiro.jpg" alt="O Silêncio do Mosteiro"
                             title="O Silêncio do Mosteiro (Criado por Gemni IA e Chat GPT )">
                     </div>
                     <div class="filme-descricao-mobile2">
@@ -309,7 +309,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme mobile 1 (background diferente - Versão de Mobile) -->
                 <div class="filme-card-mobile2">
                     <div class="poster-mobile2">
-                        <img src="assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
+                        <img src="/../assets/Image/Lágrimas de Esperança.jpg" alt="Lágrimas de Esperança"
                             title="Lágrimas de Esperança (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile2">
@@ -327,7 +327,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
             <article class="filmes-mobile">
                 <div class="filme-card-mobile">
                     <div class="poster-mobile">
-                        <img src="assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
+                        <img src="/../assets/Image/Sob o Manto da Virgem.jpg" alt="Sob o Manto da Virgem"
                             title="Sob o Manto da Virgem (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile">
@@ -339,7 +339,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme mobile 1 (background diferente - Versão de Mobile) -->
                 <div class="filme-card-mobile">
                     <div class="poster-mobile">
-                        <img src="assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
+                        <img src="/../assets/Image/As Pegadas de Pedro.jpg" alt="As Pegadas de Pedro"
                             title="As Pegadas de Pedro (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile">
@@ -351,7 +351,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <!-- Filme mobile 2 (background diferente - Versão de Mobile) -->
                 <div class="filme-card-mobile">
                     <div class="poster-mobile">
-                        <img src="assets/Image/A Última Capela.jpg" alt="A Última Capela"
+                        <img src="/../assets/Image/A Última Capela.jpg" alt="A Última Capela"
                             title="A Última Capela (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao-mobile">
@@ -368,7 +368,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
             <article class="filmes-mobile3">
                 <div class="filme-card-mobile3">
                     <div class="poster-mobile3 ">
-                        <img src="assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
+                        <img src="/../assets/Image/Entre Rosários e Estrelas.jpg" alt="Entre Rosários e Estrelas"
                             title="Entre Rosários e Estrelas (Criado por Gemni IA e Chat GPT)">
                     </div>
                     <div class="filme-descricao">
