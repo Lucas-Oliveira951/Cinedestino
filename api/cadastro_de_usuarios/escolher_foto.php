@@ -102,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 }
 
+    $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso!";
+    $tipo = "sucesso";
+    $redirect = "../login.php"
 
 ?>
 
