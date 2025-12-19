@@ -52,7 +52,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
-                <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+                <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
             <img src="<?= htmlspecialchars($foto_perfil) ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
