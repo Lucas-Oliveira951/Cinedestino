@@ -2,20 +2,16 @@
 
 require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
 
-$token = $_COOKIE['token_login'] ?? null;
-
-if (!$token) {
+if (!isset($_COOKIE['auth_token'])) {
     header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
 
-$stmt = $pdo->prepare("
-    SELECT id, nome, email, foto_perfil
-    FROM usuarios
-    WHERE token_login = :token
-    LIMIT 1
-");
-$stmt->execute([':token' => $token]);
+$stmt = $pdo->prepare("SELECT id, nome, email, foto_perfil FROM usuarios WHERE token_login = :token LIMIT 1");
+$stmt->execute([
+    ':token' => $_COOKIE['auth_token']
+]);
+
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
@@ -23,9 +19,14 @@ if (!$usuario) {
     exit;
 }
 
-/* usuário autenticado */
-$primeiroNome = explode(' ', $usuario['nome'])[0];
-$foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
+//$foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
+$id_usuario = $usuario['id'];
+$nomeCompleto = $usuario['nome'];
+$primeiroNome = explode(' ', $nomeCompleto)[0];
+
+$foto_perfil = $usuario['foto_perfil']
+    ?: "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
+
 ?>
 
 
@@ -39,9 +40,9 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="/Cinedestino-main/assets/Image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>C</title>
+    <link rel="shortcut icon" href="/../assets/Image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/../assets/css/style.css">
+    <title>Cinedestino</title>
 </head>
 
 <body>
@@ -53,7 +54,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
-                <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
+                <li><a href="/Cinedestino-main/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
             <img src="../Cinedestino-main/cadastro_de_usuarios/<?php echo htmlspecialchars($foto_perfil); ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
@@ -103,7 +104,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
                 <div class="filme-card">
                     <div class="poster">
                         <a href="assets/filmes page/Caminho da Luz/index.html">
-                            <img src="assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
+                            <img src="/../assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
                                 title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
                         </a>
                     </div>
@@ -525,6 +526,6 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
         </footer>
     </main>
 </body>
-<script src="assets/JavaScript/script.js"></script>
+<script src="/../assets/JavaScript/script.js"></script>
 
 </html>
