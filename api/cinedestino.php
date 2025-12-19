@@ -42,7 +42,7 @@ $foto_perfil = $usuario['foto_perfil']
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="/../assets/Image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/../assets/css/style.css">
-    <title>Cinedestino</title>
+    <title>Cine</title>
 </head>
 
 <body>
