@@ -108,11 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
         ':foto' => $urlFoto,
         ':id' => $id_usuario
     ]);
-}
 
     $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso!";
     $tipo = "sucesso";
-    $redirect = "../login.php"
+    $redirect = "/api/cadastro_de_usuarios/login.php";
+}
 
 ?>
 
