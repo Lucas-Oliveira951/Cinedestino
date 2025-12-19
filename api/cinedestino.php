@@ -1,17 +1,20 @@
 <?php
+require_once "conexao.php";
 
-require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
+$token = $_COOKIE['token_login'] ?? null;
 
-if (!isset($_COOKIE['auth_token'])) {
+if (!$token) {
     header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT id, nome, email, foto_perfil FROM usuarios WHERE token_login = :token LIMIT 1");
-$stmt->execute([
-    ':token' => $_COOKIE['auth_token']
-]);
-
+$stmt = $pdo->prepare("
+    SELECT id, nome, email, foto_perfil
+    FROM usuarios
+    WHERE token_login = :token
+    LIMIT 1
+");
+$stmt->execute([':token' => $token]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
@@ -19,14 +22,9 @@ if (!$usuario) {
     exit;
 }
 
-//$foto_perfil = "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
-$id_usuario = $usuario['id'];
-$nomeCompleto = $usuario['nome'];
-$primeiroNome = explode(' ', $nomeCompleto)[0];
-
-$foto_perfil = $usuario['foto_perfil']
-    ?: "../cinedestino/cadastro_de_usuarios/foto_nao_definida/default.png";
-
+/* usuário autenticado */
+$primeiroNome = explode(' ', $usuario['nome'])[0];
+$foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
 ?>
 
 
