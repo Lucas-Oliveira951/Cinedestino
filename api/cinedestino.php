@@ -47,7 +47,7 @@ $foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
     <header>
         <!-- Menu Versão desktop-->
         <nav class="menu">
-            <h1 class="titulo-principal">Cinedestino</h1>
+            <h1 class="titulo-principal">C</h1>
             <ul class="nav-list">
                 <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
