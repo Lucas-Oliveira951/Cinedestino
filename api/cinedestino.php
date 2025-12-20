@@ -1,30 +1,5 @@
 <?php
-require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
-
-$token = $_COOKIE['token_login'] ?? null;
-
-if (!$token) {
-    header("Location: /api/cadastro_de_usuarios/login.php");
-    exit;
-}
-
-$stmt = $pdo->prepare("
-    SELECT id, nome, email, foto_perfil
-    FROM usuarios
-    WHERE token_login = :token
-    LIMIT 1
-");
-$stmt->execute([':token' => $token]);
-$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$usuario) {
-    header("Location: /api/cadastro_de_usuarios/login.php");
-    exit;
-}
-
-/* usuário autenticado */
-$primeiroNome = explode(' ', $usuario['nome'])[0];
-$foto_perfil = $usuario['foto_perfil'] ?: 'foto_nao_definida/default.png';
+require_once __DIR__ "/auth.php";
 ?>
 
 
