@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
+require_once __DIR__ . "/api/cadastro_de_usuarios/conexao.php";
 
 
 //Verifica se o usuario está autenticado
