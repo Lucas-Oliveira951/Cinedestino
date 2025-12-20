@@ -24,7 +24,7 @@ setcookie('token_login', '', [
     'path' => '/',
     'secure' => $secure,
     'httponly' => true,
-    'sametime' => 'Lax'
+    'samesime' => 'Lax'
 ]);
 
 header("Location: login.php?logout=1");
