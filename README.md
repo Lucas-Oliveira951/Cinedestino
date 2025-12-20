@@ -1,10 +1,59 @@
-SISTEMA DE CADASTRO E LOGIN DE USUÁRIO
+SISTEMA DE CADASTRO E LOGIN COM AUTENTICAÇÃO POR TOKEN 
 
-O sistema permite que novos usuários se cadastrem informando qualquer endereço de e-mail, uma senha e uma foto de perfil. Para garantir a segurança dos dados, a senha nunca é armazenada em texto puro: o sistema utiliza a função password_hash, que aplica um algoritmo seguro de criptografia bcrypt e salva apenas o hash no banco de dados.
-No processo de login, o usuário informa e-mail e senha. O sistema recupera o hash correspondente e utiliza password_verify para comparar a senha digitada com o hash armazenado. Se a verificação for válida, o usuário é autenticado. E se o e-mail ou a senha forem preenchidos de maneira incorreta, o sistema redireciona o usuário de volta para a página de login
-A foto de perfil enviada no cadastro é salva diretamente em uma pasta dentro do próprio projeto. Apenas o caminho do arquivo é armazenado no banco de dados, o que permite que o sistema recupere e exiba a imagem sempre que o usuário estiver logado. Caso o usuário não definir uma foto de perfil, o sistema automaticamente definirá uma imagem padrão para a conta.
+Este projeto implementa um sistema completo de cadastro e login de usuários utilizando autenticação baseada em token, sem dependência de sessões tradicionais. O objetivo é garantir segurança, escalabilidade e organização no controle de acesso.
 
+CADASTRO DE USUARIO
 
-Dessa forma, o sistema oferece um processo de autenticação seguro, organizado e funcional, combinando criptografia de senha, gerenciamento de imagens e controle de acesso.
+O sistema permite que novos usuários se cadastrem informando um endereço de e-mail e uma senha. Para garantir a segurança das credenciais, as senhas não são armazenadas em texto puro. Durante o cadastro, o sistema utiliza a função password_hash, aplicando o algoritmo de criptografia bcrypt, e salva apenas o hash da senha no banco de dados.
+
+Após o cadastro, o sistema gera um token de cadastro temporário, que é armazenado no banco de dados e utilizado para validar o acesso à etapa de definição da foto de perfil. Esse token impede acessos indevidos e garante que apenas usuários recém-cadastrados concluam o processo.
+
+Foto de Perfil e Armazenamento
+
+A foto de perfil é opcional e pode ser definida logo após o cadastro. As imagens são enviadas e armazenadas no Supabase Storage, um serviço de armazenamento de arquivos integrado ao Supabase. Após o upload, o sistema salva no banco de dados apenas a URL pública da imagem, permitindo que ela seja recuperada e exibida facilmente no sistema.
+
+Caso o usuário não envie uma foto de perfil, o sistema pode associar automaticamente uma imagem padrão à conta.
+
+BANCO DE DADOS
+
+O banco de dados do projeto é hospedado no Supabase, que fornece uma infraestrutura baseada em PostgreSQL. Nele são armazenadas todas as informações essenciais do usuário, incluindo:
+
+-ID do usuário
+-Nome
+-E-mail
+-Hash da senha
+-URL da foto de perfil
+-Token de cadastro
+-Token de login
+
+Essa estrutura permite uma integração segura e eficiente entre autenticação, armazenamento e persistência de dados.
+
+LOGIN E AUTENTICAÇÃO POR TOKEN
+
+No processo de login, o usuário informa seu e-mail e senha. O sistema recupera o hash da senha correspondente no banco de dados e utiliza password_verify para validar a senha digitada.
+
+Quando a autenticação é bem-sucedida, o sistema gera um token de login único e criptograficamente seguro, criado com random_bytes. Esse token é:
+
+Salvo no banco de dados (Supabase)
+
+Enviado ao navegador por meio de um cookie seguro
+
+O cookie é configurado com as flags:
+
+HttpOnly (impede acesso via JavaScript)
+
+Secure (transmitido apenas em conexões HTTPS)
+
+SameSite (proteção contra CSRF)
+
+CONTROLE DE ACESSO
+
+Todas as páginas protegidas do sistema verificam a existência do cookie de autenticação e validam o token junto ao banco de dados. Caso o token seja inválido, inexistente ou expirado, o acesso é bloqueado e o usuário é redirecionado para a página de login.
+
+Esse mecanismo garante que apenas usuários autenticados possam acessar áreas restritas do sistema.
+
+LOGOUT
+
+No processo de logout, o sistema remove o token de login do banco de dados e invalida o cookie armazenado no navegador. Dessa forma, o acesso do usuário é encerrado de forma completa e segura.
 
 link para abrir na web: [https://cinedestino.vercel.app/](https://cinedestino-4knd.vercel.app/)
