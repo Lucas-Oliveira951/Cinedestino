@@ -29,7 +29,7 @@ require_once __DIR__ . "/auth.php";
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
-            <img src="<?= htmlspecialchars($foto_perfil) ?>" class="foto_de_perfil" alt="foto de perfil">
+            <img src="<?= $usuario['foto_perfil'] ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
 
         <!-- Versão responsiva de menu para Tablets e celulares -->
