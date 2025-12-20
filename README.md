@@ -7,4 +7,4 @@ A foto de perfil enviada no cadastro é salva diretamente em uma pasta dentro do
 
 Dessa forma, o sistema oferece um processo de autenticação seguro, organizado e funcional, combinando criptografia de senha, gerenciamento de imagens e controle de acesso.
 
-link para abrir na web: https://cinedestino.vercel.app/
+link para abrir na web: [https://cinedestino.vercel.app/](https://cinedestino-4knd.vercel.app/)
