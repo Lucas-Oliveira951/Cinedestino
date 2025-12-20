@@ -4,7 +4,7 @@ require_once __DIR__ . "/cadastro_de_usuarios/conexao.php";
 
 //Verifica se o usuario está autenticado
 if (!isset($_COOKIE['token_login'])) {
-    header("Location: /login.php");
+    header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
 
@@ -25,6 +25,6 @@ if (!$usuario) {
         'samesite' => 'Lax'
     ]);
 
-    header("Location: /login.php");
+    header("Location: /api/cadastro_de_usuarios/login.php");
     exit;
 }
