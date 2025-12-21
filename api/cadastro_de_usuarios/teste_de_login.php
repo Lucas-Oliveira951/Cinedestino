@@ -27,9 +27,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     header("Location: login.php?erro=1");
     exit;
-}
-
-if ($usuario || password_verify($senha, $usuario['senha'])) {
+} else {
     header("Location: login.php?sucesso=1");
     exit;
 } 
