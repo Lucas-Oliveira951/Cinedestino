@@ -14,7 +14,7 @@ include_once ("/auth.php");
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="../../Image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">
-    <title>Caminho da Luz - Caminho da Luz</title>
+    <title>Caminho da Luz- Caminho da Luz</title>
 </head>
 
 <body>
