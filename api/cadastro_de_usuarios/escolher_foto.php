@@ -73,7 +73,9 @@ function uploadSupabase($tmpFile, $nomeArquivo, $mimeType)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
 
     if (!isset($_FILES['foto_perfil']) || $_FILES['foto_perfil']['error'] !== UPLOAD_ERR_OK) {
-        die("Erro no envio do arquivo");
+        //die("Erro no envio do arquivo");
+        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro no envio do arquivo! Tente novamente.";
+        $tipo = "erro";
     }
 
     $foto_perfil = "/../foto_nao_definida/default.png";
