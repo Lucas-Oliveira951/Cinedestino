@@ -76,8 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
         //die("Erro no envio do arquivo");
         $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro no envio do arquivo! Tente novamente.";
         $tipo = "erro";
-        $redirect = "/api/cadastro_de_usuarios/login.php";
-        exit;
     }
 
     $foto_perfil = "/../foto_nao_definida/default.png";
@@ -86,7 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
     $permitidos = ['jpg', 'jpeg', 'png'];
 
     if (!in_array($ext, $permitidos)) {
-        die("Formato inválido");
+        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Formato inválido! Apenas JPG E PNG são permitidos.";
+        $tipo = "erro";
     }
 
     $nomeArquivo = uniqid() . ".$ext";
@@ -161,16 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
 
             if (!res || !res.textContent.trim()) return;
 
-            if (res.dataset.tipo === 'erro') {
-                res.style.padding = '20px'
-                res.style.background = '#dd08083f'
-                res.style.color = '#9ba5a2ff'
-                res.style.borderRadius = '10px'
-                res.style.marginBottom = '5px'
-                res.style.display = 'flex'
-                res.style.aligItems = 'center'
-                res.style.gap = '10px'
-            }
 
             if (res.dataset.tipo === 'sucesso') {
                 res.style.padding = '20px'
