@@ -56,7 +56,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
                 <label for="">Senha</label>
                 <input type="password" class="email_senha" id="Senha" name="senha" placeholder="Digite sua senha aqui">
 
-                <input type="submit" class="botao_enviar"  id="Button" name="submit" value="Entrar">
+                <input type="submit" class="botao_enviar" onclick="Criar(event)" id="Button" name="submit" value="Entrar">
                 <div id="res">
 
                 </div>
