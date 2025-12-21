@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':id' => $id
         ]);
 
-        $mensagem = "Conta criada com sucesso! Redirecionando...";
+        $mensagem = "<i class='fa-solid fa-circle-check'></i>Conta criada com sucesso! Redirecionando...";
         $tipo = "sucesso";
         $redirect = "escolher_foto.php?token=$token";
     }
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <input type="submit" id="Button" name="enviar" onclick="Criar()" value="Criar uma conta">
                 <div id="res" data-tipo="<?= $tipo ?>" data-redirect="<?= $redirect ?>">
-                  <?= $mensagem ?>
+                    <?= $mensagem ?>
                 </div>
                 <p class="login-option">Já criou uma conta? <a href="../cadastro_de_usuarios/login.php">Login</a></p>
             </form>
@@ -85,12 +85,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!res || !res.textContent.trim()) return;
 
             if (res.dataset.tipo === 'sucesso') {
-                res.style.padding = '20px';
-                res.style.background = '#57ff093f';
-                res.style.borderRadius = '10px';
-                res.style.display = 'flex';
-                res.style.alignItems = 'center';
-                res.style.gap = '10px';
+                res.style.padding = '20px'
+                res.style.background = '#57ff093f'
+                res.style.color = '#9ba5a2ff'
+                res.style.color = '10px'
+                res.style.borderRadius = '10px'
+                res.style.display = 'flex'
+                res.style.alignItems = 'center'
+                res.style.gap = '10px'
             }
 
             if (res.dataset.redirect) {
@@ -100,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         });
     </script>
-    
+
     <script src="/../assets/JavaScript/cadastro.js"></script>
 </body>
 
