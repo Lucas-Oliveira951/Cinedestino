@@ -14,6 +14,13 @@
     font-family: "Nunito", sans-serif;
 }
 
+.foto_de_perfil {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
 /* menu responsivo para tablets e celulares*/
 body {
     background-image: url(../../Image/Caminho\ da\ Luz\ -\ background\ \(Desktop\ \ Versão\).jpg);
