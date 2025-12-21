@@ -14,7 +14,7 @@ if (!$email || !$senha) {
     exit;
 }
 
-if (!password_verify($senha, $usuario['senha'])) {
+if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     header("Location: login.php?erro=1");
     exit;
 }
