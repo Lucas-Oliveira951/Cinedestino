@@ -94,7 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
     );
 
     if (!$urlFoto) {
-        die("Erro ao salvar imagem!");
+        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro ao salvar a imagem! Tente novamente";
+        $tipo = "erro";
     }
 
     $stmt = $pdo->prepare(
@@ -155,6 +156,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
             const res = document.getElementById('res');
 
             if (!res || !res.textContent.trim()) return;
+
+            if (res.dataset.tipo === 'erro') {
+                res.style.padding = '20px'
+                res.style.background = '#dd08083f'
+                res.style.color = '#9ba5a2ff'
+                res.style.borderRadius = '10px'
+                res.style.marginBottom = '5px'
+                res.style.display = 'flex'
+                res.style.aligItems = 'center'
+                res.style.gap = '10px'
+            }
 
             if (res.dataset.tipo === 'sucesso') {
                 res.style.padding = '20px'
