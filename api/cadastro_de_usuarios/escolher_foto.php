@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (res.dataset.redirect) {
                 setTimeout(() => {
                     window.location.href = res.dataset.redirect;
-                }, 3000);
+                }, 2000);
             }
         });
     </script>
