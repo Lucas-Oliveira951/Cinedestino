@@ -46,11 +46,15 @@ setcookie('token_login', $token, [
     'samesite' => 'Lax'
 ]);
 
-if (!$usuario || !password_verify($senha, $usuario['senha'])) {
-    header("Location: login.php?erro=1");
+if (password_verify($senha, $usuario['senha'])) {
+    
+    header("Location: login.php?sucesso=1");
+    
     exit;
 } else {
-    header("Location: login.php?sucesso=1");
+    
+    header("Location: login.php?erro=1");
+    
     exit;
 }
 
