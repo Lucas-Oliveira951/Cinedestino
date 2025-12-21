@@ -23,6 +23,11 @@ $stmt = $pdo->prepare("
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if (!usuario) {
+    header("Location: login.php?erro=1");
+    exit;
+}
+
 if (password_verify($senha, $usuario['senha'])) {
     
     header("Location: login.php?sucesso=1");
