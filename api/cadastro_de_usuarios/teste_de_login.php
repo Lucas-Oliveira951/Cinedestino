@@ -27,12 +27,11 @@ if (password_verify($senha, $usuario['senha'])) {
     
     header("Location: login.php?sucesso=1");
     
-    
 } else {
     
     header("Location: login.php?erro=1");
     
-
+    exit;
 }
 
 $token = bin2hex(random_bytes(32));
