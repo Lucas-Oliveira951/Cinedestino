@@ -8,10 +8,10 @@ $mensagem = null;
 $tipo = null;
 $redirect = null;
 
-if($_SERVER['REQUEST_METHOD'] !== 'POST') {
-$mensagem = null;
-$tipo = null;
-$redirect = null;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $mensagem = null;
+    $tipo = null;
+    $redirect = null;
 }
 
 $supabaseUrl = $_ENV['SUPABASE_URL'];
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
         ':id' => $id_usuario
     ]);
 
-    $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso!";
+    $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso! Indo para login...";
     $tipo = "sucesso";
     $redirect = "/api/cadastro_de_usuarios/login.php";
 }
@@ -157,12 +157,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
             if (!res || !res.textContent.trim()) return;
 
             if (res.dataset.tipo === 'sucesso') {
-                res.style.padding = '20px';
-                res.style.background = '#57ff093f';
-                res.style.borderRadius = '10px';
-                res.style.display = 'flex';
-                res.style.alignItems = 'center';
-                res.style.gap = '10px';
+                res.style.padding = '20px'
+                res.style.background = '#57ff093f'
+                res.style.color = '#9ba5a2ff'
+                res.style.color = '10px'
+                res.style.borderRadius = '10px'
+                res.style.display = 'flex'
+                res.style.alignItems = 'center'
+                res.style.gap = '10px'
             }
 
             if (res.dataset.redirect) {
