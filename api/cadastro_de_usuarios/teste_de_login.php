@@ -14,15 +14,6 @@ if (!$email || !$senha) {
     exit;
 }
 
-if (!$usuario || !password_verify($senha, $usuario['senha'])) {
-    header("Location: login.php?erro=1");
-    exit;
-}
-
-if ($usuario || password_verify($senha, $usuario['senha'])) {
-    header("Location: login.php?sucesso=1");
-    exit;
-} 
 
 $stmt = $pdo->prepare("
     SELECT id, senha 
@@ -33,6 +24,15 @@ $stmt = $pdo->prepare("
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if (!$usuario || !password_verify($senha, $usuario['senha'])) {
+    header("Location: login.php?erro=1");
+    exit;
+}
+
+if ($usuario || password_verify($senha, $usuario['senha'])) {
+    header("Location: login.php?sucesso=1");
+    exit;
+} 
 
 $token = bin2hex(random_bytes(32));
 
