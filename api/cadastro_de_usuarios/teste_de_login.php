@@ -23,6 +23,17 @@ $stmt = $pdo->prepare("
 $stmt->execute([':email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if (password_verify($senha, $usuario['senha'])) {
+    
+    header("Location: login.php?sucesso=1");
+    
+    
+} else {
+    
+    header("Location: login.php?erro=1");
+    
+
+}
 
 $token = bin2hex(random_bytes(32));
 
@@ -46,17 +57,6 @@ setcookie('token_login', $token, [
     'samesite' => 'Lax'
 ]);
 
-if (password_verify($senha, $usuario['senha'])) {
-    
-    header("Location: login.php?sucesso=1");
-    
-    exit;
-} else {
-    
-    header("Location: login.php?erro=1");
-    
-    exit;
-}
 
 //header("Location: /api/cinedestino.php");
 //exit;
