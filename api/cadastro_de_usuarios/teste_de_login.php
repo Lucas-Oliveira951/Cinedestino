@@ -14,6 +14,16 @@ if (!$email || !$senha) {
     exit;
 }
 
+if (!password_verify($senha, $usuario['senha'])) {
+    header("Location: login.php?erro=1");
+    exit;
+}
+
+if ($usuario || password_verify($senha, $usuario['senha'])) {
+    header("Location: login.php?sucesso=1");
+    exit;
+} 
+
 $stmt = $pdo->prepare("
     SELECT id, senha 
     FROM usuarios 
@@ -46,12 +56,5 @@ setcookie('token_login', $token, [
     'samesite' => 'Lax'
 ]);
 
-if ($usuario || password_verify($senha, $usuario['senha'])) {
-    header("Location: login.php?sucesso=1");
-    exit;
-} else {
-    header("Location: login.php?erro=1");
-    exit;
-}
 //header("Location: /api/cinedestino.php");
 //exit;
