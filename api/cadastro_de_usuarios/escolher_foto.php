@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
         //die("Erro no envio do arquivo");
         $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro no envio do arquivo! Tente novamente.";
         $tipo = "erro";
+        $redirect = "/api/cadastro_de_usuarios/login.php";
     }
 
     $foto_perfil = "/../foto_nao_definida/default.png";
