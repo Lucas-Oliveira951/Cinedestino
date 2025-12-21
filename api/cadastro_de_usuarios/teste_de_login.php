@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
 
-// if (!$email || !$senha) {
-//     header("Location: login.php?erro=campos");
-//     exit;
-// }
+if (!$email || !$senha) {
+    header("Location: login.php?erro=campos");
+    exit;
+}
 
 $stmt = $pdo->prepare("
     SELECT id, senha 
