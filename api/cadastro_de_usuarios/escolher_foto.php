@@ -173,8 +173,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             const res = document.getElementById('res');
 
             if (!res || !res.textContent.trim()) return;
-
-
+         
+            if (res.dataset.tipo === 'erro') {
+                res.style.padding = '20px'
+                res.style.background = '#dd08083f'
+                res.style.color = '#9ba5a2ff'
+                res.style.borderRadius = '10px'
+                res.style.marginBottom = '5px'
+                res.style.display = 'flex'
+                res.style.alignItems = 'center'
+                res.style.gap = '10px'
+            }
+            
             if (res.dataset.tipo === 'sucesso') {
                 res.style.padding = '20px'
                 res.style.background = '#57ff093f'
