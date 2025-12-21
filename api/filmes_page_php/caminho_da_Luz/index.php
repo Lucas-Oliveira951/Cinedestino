@@ -13,7 +13,7 @@ require_once __DIR__ . "/../../auth.php";
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="../../Image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="/api/filmes_page_php/caminho_da_Luz/style/style.css">
     <title>Caminho da Luz- Caminho da Luz</title>
 </head>
 
