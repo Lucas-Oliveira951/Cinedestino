@@ -1,5 +1,5 @@
 <?php
-include_once ("/api/auth.php");
+include_once ("/auth.php");
 ?>
 
 
