@@ -23,7 +23,7 @@ if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1) {
         
         //mantem o usuario por dois segundos na pagina de login e depois redireciona ele 
         setTimeout(function() {
-        window.location.href = '../cinedestino.php'; 
+        window.location.href = '/api/cinedestino.php'; 
         }, 2000);
 
        });
