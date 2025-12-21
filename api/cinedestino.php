@@ -76,7 +76,7 @@ require_once __DIR__ . "/auth.php";
             <article class="filmes">
                 <div class="filme-card">
                     <div class="poster">
-                        <a href="/../assets/filmes page/Caminho da Luz/index.html">
+                        <a href="/api/filmes_page_php/caminho_da_Luz/index.php">
                             <img src="/../assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
                                 title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
                         </a>
