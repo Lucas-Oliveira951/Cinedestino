@@ -50,5 +50,5 @@ setcookie('token_login', $token, [
     'samesite' => 'Lax'
 ]);
 
-header("Location: /api/cinedestino.php");
+header("Location: /api/cinedestino.php?sucesso=1");
 exit;
