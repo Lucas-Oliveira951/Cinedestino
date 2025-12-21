@@ -69,54 +69,68 @@ function uploadSupabase($tmpFile, $nomeArquivo, $mimeType)
     return "$supabaseUrl/storage/v1/object/public/$bucket/$path";
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_perfil'])) {
-
-    if (!isset($_FILES['foto_perfil']) || $_FILES['foto_perfil']['error'] !== UPLOAD_ERR_OK) {
-        //die("Erro no envio do arquivo");
-        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro no envio do arquivo! Tente novamente.";
+    // 1️⃣ Nenhum arquivo selecionado
+    if (
+        !isset($_FILES['foto_perfil']) ||
+        $_FILES['foto_perfil']['error'] === UPLOAD_ERR_NO_FILE
+    ) {
+        $mensagem = "<i class='fa-solid fa-circle-exclamation'></i> Selecione uma foto antes de enviar.";
         $tipo = "erro";
     }
 
-    $foto_perfil = "/../foto_nao_definida/default.png";
-
-    $ext = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
-    $permitidos = ['jpg', 'jpeg', 'png'];
-
-    if (!in_array($ext, $permitidos)) {
-        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Formato inválido! Apenas JPG E PNG são permitidos.";
+    // 2️⃣ Erro no upload
+    else if ($_FILES['foto_perfil']['error'] !== UPLOAD_ERR_OK) {
+        $mensagem = "<i class='fa-solid fa-circle-xmark'></i> Erro no envio do arquivo.";
         $tipo = "erro";
     }
 
-    $nomeArquivo = uniqid() . ".$ext";
+    // 3️⃣ Valida extensão
+    else {
+        $ext = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
+        $permitidos = ['jpg', 'jpeg', 'png'];
 
-    $urlFoto = uploadSupabase(
-        $_FILES['foto_perfil']['tmp_name'],
-        $nomeArquivo,
-        $_FILES['foto_perfil']['type']
-    );
+        if (!in_array($ext, $permitidos)) {
+            $mensagem = "<i class='fa-solid fa-circle-xmark'></i> Formato inválido. Use JPG ou PNG.";
+            $tipo = "erro";
+        } 
+        else {
 
-    if (!$urlFoto) {
-        $mensagen = "<i class='fa-solid fa-circle-xmark'></i> Erro ao salvar a imagem! Tente novamente";
-        $tipo = "erro";
+            // 4️⃣ Upload só acontece aqui
+            $nomeArquivo = uniqid() . ".$ext";
+
+            $urlFoto = uploadSupabase(
+                $_FILES['foto_perfil']['tmp_name'],
+                $nomeArquivo,
+                $_FILES['foto_perfil']['type']
+            );
+
+            if (!$urlFoto) {
+                $mensagem = "<i class='fa-solid fa-circle-xmark'></i> Erro ao salvar a imagem.";
+                $tipo = "erro";
+            } 
+            else {
+                // 5️⃣ Salva no banco
+                $stmt = $pdo->prepare("
+                    UPDATE usuarios
+                    SET foto_perfil = :foto,
+                        token_cadastro = NULL
+                    WHERE id = :id
+                ");
+                $stmt->execute([
+                    ':foto' => $urlFoto,
+                    ':id' => $id_usuario
+                ]);
+
+                $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso! Indo para login...";
+                $tipo = "sucesso";
+                $redirect = "/api/cadastro_de_usuarios/login.php";
+            }
+        }
     }
-
-    $stmt = $pdo->prepare(
-        "
-        UPDATE usuarios
-        SET foto_perfil = :foto,
-            token_cadastro = NULL
-        WHERE id = :id"
-    );
-    $stmt->execute([
-        ':foto' => $urlFoto,
-        ':id' => $id_usuario
-    ]);
-
-    $mensagem = "<i class='fa-solid fa-circle-check'></i> Foto salva com sucesso! Indo para login...";
-    $tipo = "sucesso";
-    $redirect = "/api/cadastro_de_usuarios/login.php";
 }
+
 
 ?>
 
