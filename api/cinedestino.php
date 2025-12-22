@@ -213,7 +213,7 @@ require_once __DIR__ . "/auth.php";
 
                 <!-- Filme mobile 1-->
                 <div class="filme-card-mobile">
-                    <div class="poster-mobile"><a href="/../assets/filmes page/Caminho da Luz/index.html">
+                    <div class="poster-mobile"><a href="/api/filmes_page_php/caminho_da_Luz/index.php">
 
                             <img src="/../assets/Image/Caminho da Luz.jpg" alt="Caminho da Luz"
                                 title="Caminho da Luz (Criador por Gemni IA e Chat GPT)">
