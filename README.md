@@ -8,11 +8,9 @@ O sistema permite que novos usuários se cadastrem informando um endereço de e-
 
 Após o cadastro, o sistema gera um token de cadastro temporário, que é armazenado no banco de dados e utilizado para validar o acesso à etapa de definição da foto de perfil. Esse token impede acessos indevidos e garante que apenas usuários recém-cadastrados concluam o processo.
 
-Foto de Perfil e Armazenamento
+FOTO DE PERFIL E ARMAZENAMENTO
 
-A foto de perfil é opcional e pode ser definida logo após o cadastro. As imagens são enviadas e armazenadas no Supabase Storage, um serviço de armazenamento de arquivos integrado ao Supabase. Após o upload, o sistema salva no banco de dados apenas a URL pública da imagem, permitindo que ela seja recuperada e exibida facilmente no sistema.
-
-Caso o usuário não envie uma foto de perfil, o sistema pode associar automaticamente uma imagem padrão à conta.
+A foto de perfil enviada no cadastro é armazenada no Supabase Storage, e apenas a URL pública da imagem é salva no banco de dados. Isso permite que a imagem seja facilmente recuperada e exibida sempre que o usuário estiver autenticado no sistema.
 
 BANCO DE DADOS
 
@@ -55,5 +53,8 @@ Esse mecanismo garante que apenas usuários autenticados possam acessar áreas r
 LOGOUT
 
 No processo de logout, o sistema remove o token de login do banco de dados e invalida o cookie armazenado no navegador. Dessa forma, o acesso do usuário é encerrado de forma completa e segura.
+
+
+Dessa forma, o sistema oferece um processo de autenticação seguro, organizado e escalável, utilizando criptografia de senhas, autenticação baseada em token, armazenamento em nuvem com Supabase e controle eficiente de acesso às páginas protegidas.
 
 link para abrir na web: [https://cinedestino.vercel.app/](https://cinedestino-4knd.vercel.app/)
