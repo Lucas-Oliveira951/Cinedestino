@@ -74,7 +74,6 @@ require_once __DIR__ . "/../../auth.php";
                 <li><a href="#"><i class="fa-solid fa-gears"></i> Catálogo</a></li>
                 <li><a href="#"><i class="fa-solid fa-circle-info"></i> Sobre</a></li>
             </ul>
-            <img src="<?= $usuario['foto_perfil'] ?>" class="foto_de_perfil" alt="foto de perfil">
         </nav>
     </header>
 
