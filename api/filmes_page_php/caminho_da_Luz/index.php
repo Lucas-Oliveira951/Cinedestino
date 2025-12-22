@@ -88,7 +88,7 @@ require_once __DIR__ . "/../../auth.php";
 
         <div class="container-poster">
             <div class="poster">
-                <img src="../../Image/Caminho da Luz.jpg" alt="Caminho da Luz" title="Imagem Criada pelo Gemni IA">
+                <img src="/assets/filmes page/Image/Caminho da Luz.jpg" alt="Caminho da Luz" title="Imagem Criada pelo Gemni IA">
             </div>
             <div class="info-filme">
                 <h1 class="titulo-filme">Caminho da Luz</h1>
@@ -105,7 +105,7 @@ require_once __DIR__ . "/../../auth.php";
             </div>
         </div>
     </main>
-    <script src="JavaScript/script.js"></script>
+    <script src="/assets/filmes page/Caminho da Luz/JavaScript/script.js"></script>
 </body>
 
 </html>
