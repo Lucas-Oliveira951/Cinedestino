@@ -24,7 +24,7 @@ require_once __DIR__ . "/auth.php";
         <nav class="menu">
             <h1 class="titulo-principal">Cinedestino</h1>
             <ul class="nav-list">
-                <li><a href="#" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
+                <li><a href="/api/cinedestino.php" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
@@ -39,7 +39,7 @@ require_once __DIR__ . "/auth.php";
         </button>
         <nav class="menu-lateral">
             <ul>
-                <li><a href="#"><i class="fa-solid fa-house"></i></a>Página Incial</li>
+                <li><a href="/api/cinedestino.php"><i class="fa-solid fa-house"></i></a>Página Incial</li>
                 <li><a href="#"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
