@@ -367,6 +367,15 @@ body {
 
 @media (min-width: 710px) and (max-width: 1133px) {
 
+    body {
+        background-image: url('/assets/filmes page/Filmes de Inspiração/A Luz do Perdão/img/A\ Luz\ do\ Perdão\ -\ background\ \(Tablet\ Version\).jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+
     .header {
         display: none;
     }
