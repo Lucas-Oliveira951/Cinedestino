@@ -329,7 +329,7 @@ body.ativo {
 }
 
 .card-luz {
-    background-image: url('../../Image/background-card.png');
+    background-image: url('/assets/Image/background-card.png');
     background-size: cover;
     background-position: 50% 50%;
 }
