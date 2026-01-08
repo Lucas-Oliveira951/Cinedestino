@@ -367,6 +367,10 @@ body {
 
 @media (min-width: 710px) and (max-width: 1133px) {
 
+    body {
+        background-image: url('/assets/filmes page/Filmes de Inspiração/Luz em Meu Caminho/img/Luz\ em\ Meu\ Caminho\ -\ background\ \(Tablet\ Version\).jpg');
+    }
+
     .header {
         display: none;
     }
