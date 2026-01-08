@@ -329,7 +329,7 @@ body.ativo {
 }
 
 .card-luz {
-    background-image: url('/assets/Image/background-card.png');
+    background-image: url('/assets/Catálogo/image/background-card.png');
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -339,8 +339,7 @@ body.ativo {
 }
 
 .card-roma {
-
-    background-image: url('../../Image/background-card\ \(1\).png');
+    background-image: url('/assets/Catálogo/image/background-card (1).png');
     background-size: cover;
     background-position: center;
 }
