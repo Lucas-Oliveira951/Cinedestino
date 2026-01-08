@@ -16,7 +16,8 @@
 
 /* menu responsivo para tablets e celulares*/
 body {
-   background-position: center;
+    background-image: url('/assets/filmes page/Filmes de Inspiração/Luz em Meu Caminho/img/Luz\ em\ Meu\ Caminho\ -\ background\ \(Desktop\ \ Versão\).jpg');
+    background-position: center;
     background-repeat: no-repeat;
     background-color: var(--secundary-color);
     transition: background-color 0.5s ease;
