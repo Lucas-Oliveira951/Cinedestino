@@ -84,7 +84,7 @@ function Historico() {
     descMovie.innerHTML = 'Obras que retratam momentos marcantes da história da Igreja e da humanidade, mostrando personagens e eventos que revelam o poder da fé ao longo dos séculos.'
 
     //image 1 
-    image.src = 'image/A Cruz do Império.png'
+    image.src = '/assets/Catálogo/image/A Cruz do império.png'
     titleDesc.innerHTML = 'A Cruz do Império'
     
     //Primeiro Link
