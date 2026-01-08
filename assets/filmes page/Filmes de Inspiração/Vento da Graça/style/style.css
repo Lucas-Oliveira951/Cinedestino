@@ -366,6 +366,16 @@ body {
 /* Responsividade versão Tablet */
 
 @media (min-width: 710px) and (max-width: 1133px) {
+
+    body {
+        background-image: url('/assets/filmes page/Filmes de Inspiração/Vento da Graça/img/Vento\ da\ Graça\ -\ background\ \(Tablet\ Version\).jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+    
     .header {
         display: none;
     }
