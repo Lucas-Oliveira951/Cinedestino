@@ -165,7 +165,7 @@ function Superacao() {
     Links[1].href = '../filmes page/Filmes Superação/Além do Medo/index.html'
 
     // image 3
-    image3.src = 'image/Um Novo Amanhã.png'
+    image3.src = '/assets/Image/Um Novo amanhã.jpg'
     titleDesc3.innerHTML = 'Um Novo Amanhã'
 
     //Terceiro Link
