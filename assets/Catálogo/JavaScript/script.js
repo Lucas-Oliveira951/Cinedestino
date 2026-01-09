@@ -225,7 +225,7 @@ function Aventura() {
     Links[0].href = '../filmes page/Filmes Aventura/Nas Trilhas da Fé/index.html'
 
     // image 2
-    image2.src = 'image/A Ilha da Cruz Perdida.png'
+    image2.src = '/assets/Image/A ilha da Cruz Perdida.jpg'
     titleDesc2.innerHTML = 'A Ilha da Cruz Perdida'
 
     //Segundo Link
