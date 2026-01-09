@@ -830,6 +830,7 @@ body.ativo {
 @media (min-width: 370px) and (max-width: 710px) {
     body {
         background-image: url(../Image/Background\ -\ mobile\ version.jpg);
+        background-size: 100% auto;
     }
 
     /* Menu Versão Desktop */
