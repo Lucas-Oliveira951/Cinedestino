@@ -25,7 +25,7 @@ require_once __DIR__ . "/auth.php";
             <h1 class="titulo-principal">Cinedestino</h1>
             <ul class="nav-list">
                 <li><a href="/api/cinedestino.php" class="item-list"><i class="fa-solid fa-house"></i>Página inicial</a></li>
-                <li><a href="#" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
+                <li><a href="/api/Catálogo_php/index.php" class="item-list"><i class="fa-solid fa-gears"></i>Catálogo</a></li>
                 <li><a href="#" class="item-list"><i class="fa-solid fa-circle-info"></i>Sobre</a></li>
                 <li><a href="/api/cadastro_de_usuarios/sair.php" class="item-list">Sair</a></li>
             </ul>
