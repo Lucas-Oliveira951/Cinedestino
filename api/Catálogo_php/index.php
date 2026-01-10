@@ -95,7 +95,7 @@
                         em meio às adversidades. (detalhar melhor)</p>
 
                     <div class="card-acoes">
-                        <a href="../filmes_page_php/Catálogo Principal/Caminho da Luz/index.php" class="btn-info">Mais info</a>
+                        <a href="/api/filmes_page_php/Catálogo_Principal/Caminho_da_Luz/index.php" class="btn-info">Mais info</a>
                         <span class="btn-favorito" role="button" aria-label="Favoritar"><i
                                 class="fa-regular fa-heart"></i></span>
                     </div>
