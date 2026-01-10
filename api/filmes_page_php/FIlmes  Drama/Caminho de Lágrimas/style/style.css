@@ -1,0 +1,591 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    --primary-color: #0B0B0B;
+    --secundary-color: #1C1C1C;
+    --text-color: #E4D6A9;
+    --tercery-color: #650207;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+/* menu responsivo para tablets e celulares*/
+body {
+    background-image: url('../img/Caminho\ de\ Lágrimas\ -\ background\ \(Desktop\ \ Versão\).jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--secundary-color);
+    transition: background-color 0.5s ease;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding-inline: 7%;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(225, 255, 255, 0.03);
+    background-color: var(--secundary-color);
+}
+
+/* Lado esquerdo do menu: logo + páginas*/
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+}
+
+.titulo-principal {
+    color: var(--text-color);
+    margin: 20px 7%;
+}
+
+/* menu links pequenos */
+.menu-desk {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-item {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    white-space: nowrap;
+    padding: 20px 7%;
+    border-radius: 8px;
+}
+
+.menu-item:hover {
+    background-color: var(--text-color);
+    transition: 1s ease;
+}
+
+/* Centro do menu */
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+}
+
+/*Formulário de busca */
+.pesquisa-form {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+}
+
+/* input */
+#Pesquisar {
+    width: 100%;
+    padding: 10px 44px 10px 16px;
+    border-radius: 40px;
+    border: 2px solid var(--text-color);
+    background: var(--secundary-color);
+    color: var(--text-color);
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.01);
+}
+
+#Pesquisar::placeholder {
+    color: var(--text-color);
+}
+
+/* botão dentro do input(ícone)*/
+.pesquisar-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 32px;
+    width: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Lado direito do menu */
+.nav-right {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 8px;
+}
+
+.right-item {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 6px 34px;
+    border-radius: 8px;
+}
+
+.botao-login {
+    background-color: var(--tercery-color);
+    color: white;
+    padding: 15px 50px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.botao-login:hover {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    transition: 1s ease;
+}
+
+
+/* menu versão responsiva (Tablet e Celulares)*/
+.header-responsivo {
+    display: none;
+    justify-content: space-between;
+    padding: 4px 7%;
+    background-color: var(--secundary-color);
+}
+
+.pesquisa-responsivo button{
+   background-color: transparent;
+   border: none;
+   font-size: 22px;
+   color: var(--text-color);
+   cursor: pointer;
+}
+
+.menu {
+    display: none;
+}
+
+.nav-list {
+    display: none;
+}
+
+.menu-lateral {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    color: var(--text-color);
+    background-color: var(--secundary-color);
+    z-index: 50;
+    box-shadow: 5px 5px 5px var(--secundary-color);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.menu-lateral.ativo {
+    right: 0;
+}
+
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.menu-lateral ul li {
+    padding: 15px 30px;
+}
+
+.menu-lateral ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    gap: 10px;
+}
+
+.menu-lateral ul li a:hover {
+    transition: 0.3s ease;
+    color: var(--secundary-color);
+}
+
+.menu-lateral ul li a i {
+    font-size: 24px;
+
+}
+
+.menu-lateral ul li:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+
+.menu-lateral ul li a i:hover {
+    transition: 0.3s ease;
+    transform: translateX(5px) rotate(5deg);
+}
+
+.botao-menu {
+    background-color: var(--secundary-color);
+    color: var(--text-color);
+    position: fixed;
+    right: 50px;
+    top: 20px;
+    z-index: 3;
+    border-radius: 5px;
+    font-size: 24px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.botao-menu:hover {
+    background-color: var(--text-color);
+    color: var(--secundary-color);
+    transition: 1s;
+}
+
+.botao-menu.ativo {
+    right: 320px;
+    z-index: 55;
+}
+
+/* Container poster */
+.conteudo {
+    transition: all 0.5s ease;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fundo escuro quando menu abrir */
+.background {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: .3s ease;
+    visibility: hidden;
+    z-index: 40;
+}
+
+.background.ativo {
+    visibility: visible;
+    opacity: 1;
+}
+
+.container-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89vh;
+    gap: 40px;
+
+}
+
+.poster img {
+    width: 300px;
+    box-shadow: 0px 7px 22px #0000006b;
+    border-radius: 20px;
+}
+
+.info-filme {
+    max-width: 450px;
+    margin-left: 2%;
+}
+
+.titulo-filme {
+    font-size: 40px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.info-filme span {
+    display: block;
+    color: white;
+    margin-bottom: 14px;
+}
+
+.nota-filme {
+    margin: 20px 5px;
+}
+
+.nota-filme i {
+    color: #FFE600;
+}
+
+.nota-filme p {
+    color: white;
+    font-weight: bold;
+}
+
+.sinopse {
+    color: white;
+    margin: 20px 0;
+}
+
+.buttons a {
+    display: inline-block;
+    padding: 12px 40px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.button-trailer {
+    color: white;
+    background-color: var(--secundary-color);
+}
+
+.button-trailer:hover {
+    background-color: var(--text-color);
+    color: var(--secundary-color);
+    transition: 0.3s ease;
+}
+
+.button-quiz {
+    color: white;
+    background-color: var(--tercery-color);
+    margin-left: 20px;
+}
+
+.button-quiz:hover {
+    background-color: var(--secundary-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    transition: 0.3s ease;
+}
+
+
+/* Responsividade versão Tablet */
+
+@media (min-width: 710px) and (max-width: 1133px) {
+
+    body {
+        background-image: url('/assets/filmes page/FIlmes  Drama/Caminho de Lágrimas/img/Caminho\ de\ Lágrimas\ -\ background\ \(Tablet\ Version\).jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .header-responsivo {
+        display: flex;
+        align-items: center;
+        padding-inline: 3%;
+        color: var(--text-color);
+        border-bottom: 1px solid rgba(225, 255, 255, 0.03);
+        background-color: var(--secundary-color);
+    }
+
+    /* Lado esquerdo do menu: logo + páginas*/
+    .nav-left {
+        display: none;
+    }
+
+    /* Centro do menu */
+    .nav-center {
+        display: none;
+    }
+
+    /* Lado direito do menu */
+    .nav-right {
+        display: none;
+    }
+
+    .titulo-principal {
+        color: var(--text-color);
+        margin: 20px 7%;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .pesquisa-responsivo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .icon-pesquisa {
+        display: inline-flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .menu-lateral {
+        display: block;
+    }
+
+    /* Poster do filme */
+
+    .container-poster {
+        margin-left: 3%;
+        gap: 15px;
+    }
+
+    .titulo-filme {
+        font-size: 45px;
+    }
+
+    .info-filme span {
+        font-size: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-right: 5%;
+    }
+
+    .buttons a {
+        font-size: 18px;
+        text-align: center;
+        padding: 22px 80px;
+        font-weight: 600;
+    }
+
+    .button-quiz {
+        margin: 10px 0;
+    }
+
+    .sinopse {
+        margin-right: 4%;
+        font-size: 23px;
+    }
+}
+
+/* Responsividade versão mobile */
+
+@media (min-width: 370px) and (max-width: 710px) {
+    body {
+        background: url('../img/Caminho\ de\ Lágrimas\ -\ background\ \(Tablet\ Version\).jpg');
+        background-repeat: no-repeat;
+    }
+
+    /* Menu versão Desktop */
+    .nav-left {
+        display: none;
+    }
+
+    /* Centro do menu */
+    .nav-center {
+        display: none;
+    }
+
+    /* Lado direito do menu */
+    .nav-right {
+        display: none;
+    }
+
+    /* Menu responsivo */
+
+    .header-responsivo {
+        display: flex;
+    }
+
+    .titulo-principal {
+        color: var(--text-color);
+        margin: 20px 7%;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .pesquisa-responsivo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .icon-pesquisa {
+        display: block;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .botao-menu {
+        display: block;
+    }
+
+    .menu-lateral {
+        display: block;
+    }
+
+    .conteudo {
+        min-height: 80vh;
+    }
+
+    /* Poster do filme */
+
+    .container-poster {
+        display: flex;
+        margin-left: 5%;
+        gap: 10px;
+        height: 80vh;
+    }
+
+    .poster img {
+        width: 150px;
+    }
+
+    .sinopse-container span {
+        font-size: 12px;
+    }
+
+    .titulo-filme {
+        font-size: 20px;
+    }
+
+    .nota-filme p {
+        font-size: 12px;
+    }
+
+    .sinopse {
+        font-size: 16px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-right: 5%;
+    }
+
+    .buttons a {
+        font-size: 15px;
+        text-align: center;
+        padding: 8px 0px;
+        font-weight: 600;
+    }
+
+    .button-trailer {
+        margin: 4px 0;
+        font-size: 8px;
+    }
+
+    .button-quiz {
+        margin: 4px 0;
+        font-size: 8px;
+    }
+}
