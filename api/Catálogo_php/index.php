@@ -8,7 +8,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/assets/Catálogo/css/style.css">
-    <link rel="shortcut icon" href="../Image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/Image/favicon.ico" type="image/x-icon">
     <title>Cinedestino - Catálogo</title>
 </head>
 
