@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . "/../../auth.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,7 +44,7 @@
         <!-- Lado direito do menu -->
         <div class="nav-right">
             <a href="#" class="right-item"><i class="fa-solid fa-circle-info"></i>Sobre</a>
-            <a href="assets/Login e Cadastro/index.html" class="botao-login">Entrar</a>
+            <img src="<?= $usuario['foto_perfil'] ?>" class="foto_de_perfil" alt="foto de perfil">
         </div>
     </header>
 
